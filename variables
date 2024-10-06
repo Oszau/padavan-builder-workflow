@@ -1,4 +1,4 @@
-№PADAVAN_REPO="https://gitlab.com/hadzhioglu/padavan-ng.git"
+#PADAVAN_REPO="https://gitlab.com/hadzhioglu/padavan-ng.git"
 PADAVAN_REPO="https://gitlab.com/Oszau/padavan-ng.git"
 PADAVAN_BRANCH="master"
 PADAVAN_COMMIT="HEAD"
