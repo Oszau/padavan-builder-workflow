@@ -1,6 +1,6 @@
 #PADAVAN_REPO="https://gitlab.com/hadzhioglu/padavan-ng.git"
-PADAVAN_REPO="https://gitlab.com/Oszau/padavan-ng.git"
-PADAVAN_BRANCH="n65u"
+PADAVAN_REPO="https://github.com/andy-padavan/rt-n56u.git"
+PADAVAN_BRANCH="master"
 PADAVAN_COMMIT="HEAD"
 PADAVAN_TOOLCHAIN_URL="https://gitlab.com/api/v4/projects/hadzhioglu%2Fpadavan-ng/packages/generic/toolchain/latest/toolchain.tzst"
 
