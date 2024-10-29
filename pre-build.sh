@@ -1,1 +1,1 @@
-../../pt_ralink_8m_bigstor.config > pt_ralink_8m.config
+cp partitions.config padavan-ng/trunk/boards/DLINK/DIR-320B1/partitions.config
