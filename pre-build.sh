@@ -7,3 +7,5 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 
 sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
+
+cp asuscomm.c padavan-ng/trunk/user/inadyn/inadyn-2.12.0/plugins
