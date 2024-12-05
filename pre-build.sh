@@ -11,3 +11,5 @@ sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefil
 
 rm -rf padavan-ng/trunk/user/inadyn
 cp -rf inadyn padavan-ng/trunk/user/inadyn
+rm padavan-ng/trunk/user/rc/services_ex.c
+cp services_ex.c padavan-ng/trunk/user/rc/services_ex.c
