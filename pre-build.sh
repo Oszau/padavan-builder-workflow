@@ -8,4 +8,5 @@ sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/co
 sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
 
-rm -r padavan-ng/trunk/user/inadyn && cp inadyn padavan-ng/trunk/user/inadyn
+rm -r padavan-ng/trunk/user/inadyn
+cp inadyn padavan-ng/trunk/user/inadyn
