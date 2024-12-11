@@ -12,4 +12,5 @@ sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefil
 #cp -rf inadyn padavan-ng/trunk/user/inadyn
 
 sed -i 's/#define BOARD_GPIO_BTN_RESET/#undef BOARD_GPIO_BTN_RESET/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
+sed -i 's/GPIO_BTN_RESET/#GPIO_BTN_RESET/' padavan-ng/uboot/mips/profiles/asus_rt-n56u/.config
 #sed -i 's/#define BOARD_GPIO_BTN_WPS/#undef BOARD_GPIO_BTN_WPS/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
