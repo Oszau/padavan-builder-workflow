@@ -11,6 +11,6 @@ sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/co
 #rm -rf padavan-ng/trunk/user/inadyn
 #cp -rf inadyn padavan-ng/trunk/user/inadyn
 
-#sed -i 's/#define BOARD_GPIO_BTN_RESET/#undef BOARD_GPIO_BTN_RESET/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
+sed -i 's/#define BOARD_GPIO_BTN_RESET/#undef BOARD_GPIO_BTN_RESET/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
 #sed -i 's/#define BOARD_GPIO_BTN_WPS/#undef BOARD_GPIO_BTN_WPS/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
 #sed -i 's/GPIO_BTN_RESET/#GPIO_BTN_RESET/' padavan-ng/uboot/mips/profiles/asus_rt-n56u/.config
