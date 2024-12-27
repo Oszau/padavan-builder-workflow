@@ -7,7 +7,8 @@ sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/co
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
-sed -i '45d' padavan-ng/trunk/user/doh_proxy/Makefile
+rm padavan-ng/trunk/user/doh_proxy/Makefile
+cp doh_proxy/Makefile padavan-ng/trunk/user/doh_proxy/Makefile
 
 sed -i 's/# CONFIG_HEXDUMP is not set/CONFIG_HEXDUMP=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_HEXEDIT is not set/CONFIG_HEXEDIT=y/' padavan-ng/trunk/configs/boards/busybox.config
