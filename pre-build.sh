@@ -16,6 +16,9 @@ sed -i '244s/.*/HOSTCFLAGS = -Wall -Wmissing-prototypes -Wstrict-prototypes -Os 
 sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
 sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 
+sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
+
 sed -i 's/# CONFIG_HEXDUMP is not set/CONFIG_HEXDUMP=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_HEXEDIT is not set/CONFIG_HEXEDIT=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_NC is not set/CONFIG_NC=y/' padavan-ng/trunk/configs/boards/busybox.config
@@ -27,6 +30,6 @@ sed -i 's/# CONFIG_NC_110_COMPAT is not set/CONFIG_NC_110_COMPAT=y/' padavan-ng/
 #rm -rf padavan-ng/trunk/user/inadyn
 #cp -rf inadyn padavan-ng/trunk/user/inadyn
 
-sed -i 's/#define BOARD_GPIO_BTN_RESET/#undef BOARD_GPIO_BTN_RESET/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
+#sed -i 's/#define BOARD_GPIO_BTN_RESET/#undef BOARD_GPIO_BTN_RESET/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
 #sed -i 's/#define BOARD_GPIO_BTN_WPS/#undef BOARD_GPIO_BTN_WPS/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
 #sed -i 's/GPIO_BTN_RESET/#GPIO_BTN_RESET/' padavan-ng/uboot/mips/profiles/asus_rt-n56u/.config
