@@ -23,6 +23,3 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 #sed -i 's/# CONFIG_NC_SERVER is not set/CONFIG_NC_SERVER=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_NC_EXTRA is not set/CONFIG_NC_EXTRA=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_NC_110_COMPAT is not set/CONFIG_NC_110_COMPAT=y/' padavan-ng/trunk/configs/boards/busybox.config
-
-sed -i '198a\$(ROMFSINST) -p +x /usr/sbin/ASUSddns.sh' padavan-ng/trunk/user/Makefile
-sed -i '199a\$(ROMFSINST) -p +x /usr/sbin/sysinfo' padavan-ng/trunk/user/Makefile
