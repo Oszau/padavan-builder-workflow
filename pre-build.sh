@@ -12,9 +12,9 @@ sed -i 's:$(ROMFSINST) $(SRC_NAME)/build/https_dns_proxy /usr/sbin/doh_proxy2:$(
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -O2 -flto $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -O2 -flto $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -O2 -flto $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.3/Makefile
-sed -i '244s/.*/HOSTCFLAGS = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -flto -fomit-frame-pointer -std=gnu89/' padavan-ng/trunk/linux-3.4.x/Makefile
-sed -i '245s/.*/HOSTCXXFLAGS = -O2 -flto/' padavan-ng/trunk/linux-3.4.x/Makefile
-sed -i '573s/.*/KBUILD_CFLAGS += -O2 -flto -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
+sed -i '244s/.*/HOSTCFLAGS = -Wall -Wmissing-prototypes -Wstrict-prototypes -Os -fomit-frame-pointer -std=gnu89/' padavan-ng/trunk/linux-3.4.x/Makefile
+sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
+sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
