@@ -7,7 +7,7 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 
 cp ASUSddns.sh padavan-ng/trunk/user/ASUSddns.sh
 sed -i '199a\$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/Makefile
-sed -i '200a\$(ROMFSINST) -s /usr/binASUSddns.sh /etc/storage/ASUSddns.sh\' padavan-ng/trunk/user/Makefile
+sed -i '200a\$(ROMFSINST) -s /usr/bin/ASUSddns.sh /etc/storage/ASUSddns.sh\' padavan-ng/trunk/user/Makefile
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
