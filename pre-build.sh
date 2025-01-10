@@ -5,10 +5,10 @@ rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/pa
 cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 #cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 
-echo "Installing SUSddns.sh"
-cp ASUSddns.sh padavan-ng/trunk/user/ASUSddns.sh
-sed -i '177a\$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/Makefile
-cat padavan-ng/trunk/user/Makefile
+#echo "Installing SUSddns.sh"
+#cp ASUSddns.sh padavan-ng/trunk/user/ASUSddns.sh
+#sed -i '177a\$(ROMFSINST) ASUSddns.sh -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/Makefile
+#cat padavan-ng/trunk/user/Makefile
 #sed -i '200a\$(ROMFSINST) -s /usr/bin/ASUSddns.sh /etc/storage/ASUSddns.sh\' padavan-ng/trunk/user/Makefile
 #echo "*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc/storage/cron/crontabs/admin
 
