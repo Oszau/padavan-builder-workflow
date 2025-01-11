@@ -14,7 +14,7 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 
 cp sysinfo padavan-ng/trunk/user/optware/sysinfo
 ls padavan-ng/trunk/user/optware
-sed -i '13a\        $(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
+sed -i '13a\$(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
 cat padavan-ng/trunk/user/optware/Makefile
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
@@ -30,8 +30,8 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 
 #sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_NL is not set/CONFIG_NL=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_NL is not set/CONFIG_NL=y/' padavan-ng/trunk/configs/boards/busybox.config
 
 #sed -i 's/# CONFIG_HEXDUMP is not set/CONFIG_HEXDUMP=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_HEXEDIT is not set/CONFIG_HEXEDIT=y/' padavan-ng/trunk/configs/boards/busybox.config
