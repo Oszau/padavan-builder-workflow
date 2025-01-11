@@ -19,7 +19,7 @@ sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/opt
 #cat padavan-ng/trunk/user/optware/Makefile
 
 cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clecr_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
