@@ -12,8 +12,8 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 #sed -i '200a\$(ROMFSINST) -s /usr/bin/ASUSddns.sh /etc/storage/ASUSddns.sh\' padavan-ng/trunk/user/Makefile
 #echo "*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc/storage/cron/crontabs/admin
 
-cp sysinfo padavan-ng/trunk/user/busybox/sysinfo
-sed -i '13a:$(ROMFSINST) -p +x $(THISDIR)/sysinfo /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
+cp sysinfo padavan-ng/trunk/user/optware/sysinfo
+sed -i '13a\  $(ROMFSINST) -p +x $(THISDIR)/sysinfo /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
 cat padavan-ng/trunk/user/optware/Makefile
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
