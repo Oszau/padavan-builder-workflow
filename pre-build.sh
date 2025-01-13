@@ -8,13 +8,15 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-sed -i '223a\\techo "Uncomment for use ASUSddns" > $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '224a\\ttecho "#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
-
 cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-sed -i '225a\\ttecho "Uncomment for clear RAM cache minimal %" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '226a\\ttecho "#*/30 * * * * /usr/bin/clear_RAM.sh 15" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+
+sed -i '223a\\techo "if [ ! -f "$dir_crond/$(nvram get http_username)" ]; then" > $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '224a\\t\techo "Uncomment for use ASUSddns" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '225a\\t\techo "#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '226a\\t\techo "Uncomment for clear RAM cache minimal %" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '227a\\t\techo "#*/30 * * * * /usr/bin/clear_RAM.sh 15" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '228a\\techo "fi" >> $dir_crond/admin' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
