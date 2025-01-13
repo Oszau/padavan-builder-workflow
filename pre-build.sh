@@ -17,6 +17,7 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 echo "Uncomment for clear RAM cache minimal %" >> /etc/storage/cron/crontabs/admin
 echo "#*/30 * * * * /usr/bin/clear_RAM.sh 15" >> /etc/storage/cron/crontabs/admin
+sed -i '16a\\t$(ROMFSINST) /etc/storage/cron/crontabs/admin' padavan-ng/trunk/user/optware/Makefile
 
 #cp sysinfo padavan-ng/trunk/user/optware/sysinfo
 #ls padavan-ng/trunk/user/optware
