@@ -5,13 +5,18 @@ rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/pa
 cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 
-cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
-sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-sed -i '15a\\tmkdir -p $(INSTALLDIR)/etc/storage/cron/crontabs' padavan-ng/trunk/user/optware/Makefile
-echo -у "Uncomment for use ASUSddns\n#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc/storage/cron/crontabs/admin
+sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
+sed -i '14a\\tmkdir -p $(INSTALLDIR)/etc/storage/cron/crontabs' padavan-ng/trunk/user/optware/Makefile
+#echo -у "Uncomment for use ASUSddns\n#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc/storage/cron/crontabs/admin
+mkdir -p /etc/storage/cron/crontabs
+echo "Uncomment for use ASUSddns" > /etc/storage/cron/crontabs/admin
+echo "#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" >> /etc/storage/cron/crontabs/admin
+
+cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+echo "Uncomment for clear RAM cache minimal %" >> /etc/storage/cron/crontabs/admin
+echo "#*/30 * * * * /usr/bin/clear_RAM.sh 15" >> /etc/storage/cron/crontabs/admin
 
 #cp sysinfo padavan-ng/trunk/user/optware/sysinfo
 #ls padavan-ng/trunk/user/optware
