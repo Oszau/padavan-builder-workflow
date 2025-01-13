@@ -7,7 +7,8 @@ cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-echo "*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc_ro/storage/cron/crontabs/admin
+sed -i '14a\\tmkdir -p $(INSTALLDIR)/etc/storage/cron/crontabs' padavan-ng/trunk/user/optware/Makefile
+echo -у "Uncomment for use ASUS ddns service\n#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger" > /etc/storage/cron/crontabs/admin
 
 #cp sysinfo padavan-ng/trunk/user/optware/sysinfo
 #ls padavan-ng/trunk/user/optware
