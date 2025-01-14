@@ -11,8 +11,8 @@ sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/opt
 cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 
-sed -i '223a\\tif [ ! -f "$dir_crond/$(nvram get http_username)" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '224a\\t\tcat > "$(nvram get http_username)" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '223a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '224a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '225a\Uncomment for use ASUSddns' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '226a\#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '227a\Uncomment for clear RAM cache minimal %' padavan-ng/trunk/user/scripts/mtd_storage.sh
