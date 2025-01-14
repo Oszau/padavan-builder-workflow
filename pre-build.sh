@@ -13,12 +13,12 @@ sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/op
 
 sed -i '223a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '224a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '225a\Uncomment for use ASUSddns' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '225a\# Uncomment for use ASUSddns' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '226a\#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '227a\Uncomment for clear RAM cache minimal %' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '227a\# Uncomment for clear RAM cache minimal %' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '228a\#*/30 * * * * /usr/bin/clear_RAM.sh 15' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '229a\EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '230a\\tfi' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '229a\]nEOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '231a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
