@@ -18,7 +18,7 @@ sed -i '225a\#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram g
 sed -i '226a\# Uncomment for clear RAM cache minimal %' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '227a\#*/30 * * * * /usr/bin/clear_RAM.sh 15' padavan-ng/trunk/user/scripts/mtd_storage.sh
 sed -i '228a\\nEOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
-sed -i '239a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
+sed -i '229a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
