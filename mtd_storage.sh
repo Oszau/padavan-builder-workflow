@@ -275,8 +275,8 @@ EOF
 ### Called before router shutdown
 ### \$1 - action (0: reboot, 1: halt, 2: power-off)
 
-#swapoff /media/AiDisk_a1/swapfile
-#sync && sync && sync && umount /dev/sda1
+swapoff /media/AiDisk_a1/swapfile
+sync && sync && sync && umount /dev/sda1
 
 EOF
 		chmod 755 "$script_shutd"
@@ -296,11 +296,12 @@ iptables -t nat -nvL POSTROUTING | grep SNAT | awk '{
     split($8,src,"!");
     if (src[1]=="") {src="! -s "src[2]} else {src="-s "src[1]};
     if ($9=="0.0.0.0/0") {dst=""} else {dst="-d "$9};
+    # SNAT back to MASQUERADE
     #system("iptables -t nat -D POSTROUTING -o "$7" "src" "dst" -j SNAT --to-source "ip[1]);
     #system("iptables -t nat -A POSTROUTING -o "$7" "src" "dst" -j MASQUERADE");
 }'
 
-#swapon /media/AiDisk_a1/swapfile
+swapon /media/AiDisk_a1/swapfile
 
 EOF
 		chmod 755 "$script_postf"
