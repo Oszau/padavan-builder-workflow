@@ -11,6 +11,8 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
+sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
 sed -i 's:$(ROMFSINST) $(SRC_NAME)/build/https_dns_proxy /usr/sbin/doh_proxy2:$(ROMFSINST) -s /usr/sbin/doh_proxy /usr/sbin/doh_proxy2:' padavan-ng/trunk/user/doh_proxy/Makefile
