@@ -223,10 +223,9 @@ func_fill()
 
 	if [ ! -f "$dir_crond/$USER" ]; then
 		cat > "$USER" <<EOF
-# Uncomment for use ASUSddns
 #*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger
-# Uncomment for clear RAM cache minimal %
 #*/30 * * * * /usr/bin/clear_RAM.sh 15
+
 EOF
 	fi
 
@@ -276,6 +275,9 @@ EOF
 ### Called before router shutdown
 ### \$1 - action (0: reboot, 1: halt, 2: power-off)
 
+#swapoff /media/AiDisk_a1/swapfile
+#sync && sync && sync && umount /dev/sda1
+
 EOF
 		chmod 755 "$script_shutd"
 	fi
@@ -287,6 +289,18 @@ EOF
 
 ### Custom user script
 ### Called after internal iptables reconfig (firewall update)
+
+iptables -t nat -nvL POSTROUTING | grep SNAT | awk '{
+    "ifconfig "$7" | grep Mask" | getline ip;
+    split(ip,ip,":"); split(ip[2],ip," ");
+    split($8,src,"!");
+    if (src[1]=="") {src="! -s "src[2]} else {src="-s "src[1]};
+    if ($9=="0.0.0.0/0") {dst=""} else {dst="-d "$9};
+    #system("iptables -t nat -D POSTROUTING -o "$7" "src" "dst" -j SNAT --to-source "ip[1]);
+    #system("iptables -t nat -A POSTROUTING -o "$7" "src" "dst" -j MASQUERADE");
+}'
+
+#swapon /media/AiDisk_a1/swapfile
 
 EOF
 		chmod 755 "$script_postf"
