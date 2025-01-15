@@ -222,7 +222,7 @@ func_fill()
 	[ ! -d "$dir_crond" ] && mkdir -p -m 730 "$dir_crond"
 
 	if [ ! -f "$dir_crond/$USER" ]; then
-		cat > "$USER" <<EOF
+		cat > "$dir_crond/$USER" <<EOF
 #*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger
 #*/30 * * * * /usr/bin/clear_RAM.sh 15
 
