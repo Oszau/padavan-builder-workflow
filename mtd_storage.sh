@@ -222,8 +222,8 @@ func_fill()
 	[ ! -d "$dir_crond" ] && mkdir -p -m 730 "$dir_crond"
 
 	if [ ! -f "$dir_crond/$USER" ]; then
-		cat > "$USER" <<EOF
-#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger
+		cat > "$dir_crond/$USER" <<EOF
+#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $USER update logger
 #*/30 * * * * /usr/bin/clear_RAM.sh 15
 
 EOF
@@ -296,7 +296,7 @@ iptables -t nat -nvL POSTROUTING | grep SNAT | awk '{
     split($8,src,"!");
     if (src[1]=="") {src="! -s "src[2]} else {src="-s "src[1]};
     if ($9=="0.0.0.0/0") {dst=""} else {dst="-d "$9};
-    # SNAT back to MASQUERADE
+    # SNAT return to MASQUERADE
     #system("iptables -t nat -D POSTROUTING -o "$7" "src" "dst" -j SNAT --to-source "ip[1]);
     #system("iptables -t nat -A POSTROUTING -o "$7" "src" "dst" -j MASQUERADE");
 }'
