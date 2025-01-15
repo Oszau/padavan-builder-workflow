@@ -223,7 +223,7 @@ func_fill()
 
 	if [ ! -f "$dir_crond/$USER" ]; then
 		cat > "$dir_crond/$USER" <<EOF
-#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $(nvram get rt_ssid) update logger
+#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $USER update logger
 #*/30 * * * * /usr/bin/clear_RAM.sh 15
 
 EOF
