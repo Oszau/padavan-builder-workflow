@@ -1,15 +1,15 @@
 sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=ppp0/' padavan-ng/trunk/user/nfqws/zapret/config
 sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
 
-rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
+#rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 
-cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
-sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+#cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
+#sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
+#cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+#sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+#cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
@@ -20,7 +20,7 @@ cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '228a\\nEOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '229a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+#sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
