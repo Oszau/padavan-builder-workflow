@@ -4,14 +4,14 @@
 --dpi-desync=fake,multidisorder --dpi-desync-split-pos=1,midsld --dpi-desync-fooling=md5sig
 #--dpi-desync=fake,disorder2 --dpi-desync-ttl=0 --dpi-desync-fooling=md5sig,badsum
 #--dpi-desync=fake,multisplit --dpi-desync-split-pos=method+2 --dpi-desync-fooling=md5sig
-<HOSTLIST>
+<HOSTLIST_NOAUTO>
 
 --new
 --filter-tcp=443
 #--dpi-desync=fake,split2 --dpi-desync-ttl=0 --dpi-desync-repeats=16 --dpi-desync-split-pos=1 --dpi-desync-fooling=md5sig,badseq
 --dpi-desync=fake,multidisorder --dpi-desync-split-pos=1,midsld --dpi-desync-fooling=md5sig,badseq
 --dpi-desync-fake-tls=/usr/share/zapret/fake/tls_clienthello_www_google_com.bin
-<HOSTLIST>
+<HOSTLIST_NOAUTO>
 
 --new
 --filter-udp=443
