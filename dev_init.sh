@@ -66,8 +66,8 @@ fi
 #fi
 
 if [ -f /etc_ro/ca-certificates.crt.gz ]; then
-	gzip -dkc ca-certificates.crt.gz > /var/ca-certificates.crt
-	ln -sf /var/ca-certificates.crt /etc/ssl/cert.pem
+	gzip -dkc /etc_ro/ca-certificates.crt.gz > /tmp/ca-certificates.crt
+	ln -sf /tmp/ca-certificates.crt /etc/ssl/cert.pem
 fi
 
 # create symlinks
