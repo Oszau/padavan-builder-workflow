@@ -26,7 +26,7 @@ cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/confi
 #sed -i '228a\\nEOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '229a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+#sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
@@ -40,12 +40,12 @@ sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
 sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 #sed -i 's/# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set/CONFIG_CC_OPTIMIZE_FOR_SIZE=y/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
-sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-1.1/Makefile
+gzip -kc padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt > padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt.gz
+ls -la padavan-ng/trunk/libs/libssl-1.1
+cat padavan-ng/trunk/libs/libssl-1.1/Makefile
+sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\$(ROMFSINST) /etc_ro/ca-certificates.crt.gz\' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-3.1/Makefile
-gzip -kc padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt > padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt.gz
-ls -la padavan-ng/trunk/libs/libssl-3.3
-sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\$(ROMFSINST) /etc_ro/ca-certificates.crt.gz\' padavan-ng/trunk/libs/libssl-3.3/Makefile
-cat padavan-ng/trunk/libs/libssl-3.3/Makefile
+sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-3.3/Makefile
 cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
 cat padavan-ng/trunk/user/scripts/dev_init.sh
 
