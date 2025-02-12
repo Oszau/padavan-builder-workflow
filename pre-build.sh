@@ -7,7 +7,7 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
-cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
+#cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
 #cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 #sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
@@ -40,9 +40,9 @@ sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
 sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 #sed -i 's/# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set/CONFIG_CC_OPTIMIZE_FOR_SIZE=y/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
-gzip -k padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-3.1/Makefile
+gzip -kc padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt > padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt.gz
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\$(ROMFSINST) /etc_ro/ca-certificates.crt.gz\' padavan-ng/trunk/libs/libssl-3.3/Makefile
 cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
 
