@@ -41,10 +41,10 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 #sed -i 's/# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set/CONFIG_CC_OPTIMIZE_FOR_SIZE=y/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
 gzip -k padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt
-#cp ca-certificates.crt.gz padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt.gz
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\#$(ROMFSINST) /etc_ro/ca-certificates.crt\' padavan-ng/trunk/libs/libssl-3.1/Makefile
 sed -i 's\$(ROMFSINST) /etc_ro/ca-certificates.crt\$(ROMFSINST) /etc_ro/ca-certificates.crt.gz\' padavan-ng/trunk/libs/libssl-3.3/Makefile
+cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
 
 sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
