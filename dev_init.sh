@@ -61,13 +61,13 @@ if [ -f /etc_ro/openssl.cnf ]; then
 	cp -f /etc_ro/openssl.cnf /etc/ssl
 fi
 
-if [ -f /etc_ro/ca-certificates.crt ]; then
-	ln -sf /etc_ro/ca-certificates.crt /etc/ssl/cert.pem
-fi
+#if [ -f /etc_ro/ca-certificates.crt ]; then
+	#ln -sf /etc_ro/ca-certificates.crt /etc/ssl/cert.pem
+#fi
 
 if [ -f /etc_ro/ca-certificates.crt.gz ]; then
-	gzip -dkc /etc_ro/ca-certificates.crt.gz > /tmp/ca-certificates.crt
-	ln -sf /tmp/ca-certificates.crt /etc/ssl/cert2.pem
+	gzip -dkc /etc_ro/ca-certificates.gz > /tmp/ca-certificates.crt
+	ln -sf /tmp/ca-certificates.crt /etc/ssl/cert.pem
 fi
 
 # create symlinks
