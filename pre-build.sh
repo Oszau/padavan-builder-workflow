@@ -42,7 +42,7 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 
 gzip -kc padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt > padavan-ng/trunk/libs/libssl-1.1/ca-certificates.gz
 ls -la padavan-ng/trunk/libs/libssl-1.1
-sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:$(ROMFSINST) -p /etc_ro/ca-certificates.crt.gz:' padavan-ng/trunk/libs/libssl-1.1/Makefile
+sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:$(ROMFSINST) /etc_ro/ca-certificates.gz:' padavan-ng/trunk/libs/libssl-1.1/Makefile
 cat padavan-ng/trunk/libs/libssl-1.1/Makefile
 #sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:#$(ROMFSINST) /etc_ro/ca-certificates.crt:' padavan-ng/trunk/libs/libssl-3.1/Makefile
 cat padavan-ng/trunk/libs/libssl-3.1/Makefile
