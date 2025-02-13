@@ -65,8 +65,8 @@ fi
 	#ln -sf /etc_ro/ca-certificates.crt /etc/ssl/cert.pem
 #fi
 
-if [ -f /etc_ro/ca-certificates.gz ]; then
-	gzip -dkc /etc_ro/ca-certificates.gz > /tmp/ca-certificates.crt
+if [ -f /etc_ro/ca-certificates.crt.gz ]; then
+	gzip -dkc /etc_ro/ca-certificates.crt.gz > /tmp/ca-certificates.crt
 	ln -sf /tmp/ca-certificates.crt /etc/ssl/cert.pem
 fi
 
