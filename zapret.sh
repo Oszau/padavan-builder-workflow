@@ -26,11 +26,9 @@ HOSTLIST_DOMAINS="https://github.com/1andrevich/Re-filter-lists/releases/latest/
 HOSTLIST_MARKER="<HOSTLIST>"
 HOSTLIST_NOAUTO_MARKER="<HOSTLIST_NOAUTO>"
 
-[ ! -f "/tmp/auto.list" ] && cp ${ETC_DIR}/zapret/auto.list /tmp/auto.list
-
 HOSTLIST_NOAUTO="
   --hostlist=${ETC_DIR}/zapret/user.list
-  --hostlist=/tmp/auto.list
+  --hostlist=${ETC_DIR}/zapret/auto.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
   --hostlist=/tmp/filter.list
 "
@@ -183,7 +181,7 @@ offload_set_rules() {
       echo "-I FORWARD 2 -o $IFACE -j forwarding_rule_zapret"
     done)
 
-  [ -n "$FW_FORWARD" ] && ip$1tables-restore -n 2>/dev/null <<EOF
+  [ -n "$FW_FORWARD" ] && ip$1tables-restore -n <<EOF
 *filter
 :forwarding_rule_zapret - [0:0]
 -A forwarding_rule_zapret -p udp -m multiport --dports $UDP_PORTS -m connbytes --connbytes 1:9 --connbytes-mode packets --connbytes-dir original -m comment --comment zapret_traffic_offloading_exemption -j RETURN
@@ -254,7 +252,7 @@ iptables_set_rules() {
     FW_MANGLE="$FW_MANGLE$(_MANGLE_RULES)"
   done
 
-  [ -n "$FW_MANGLE" ] && ip$1tables-restore -n 2>/dev/null <<EOF
+  [ -n "$FW_MANGLE" ] && ip$1tables-restore -n <<EOF
 *mangle
 $(echo "$FW_MANGLE")
 COMMIT
