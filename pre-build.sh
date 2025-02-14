@@ -40,16 +40,18 @@ sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
 sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 #sed -i 's/# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set/CONFIG_CC_OPTIMIZE_FOR_SIZE=y/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
-gzip -kc padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt > padavan-ng/trunk/libs/libssl-1.1/ca-certificates
-ls -la padavan-ng/trunk/libs/libssl-1.1
-sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:$(ROMFSINST) /etc_ro/ca-certificates:' padavan-ng/trunk/libs/libssl-1.1/Makefile
-cat padavan-ng/trunk/libs/libssl-1.1/Makefile
-sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:#$(ROMFSINST) /etc_ro/ca-certificates.crt:' padavan-ng/trunk/libs/libssl-3.1/Makefile
-cat padavan-ng/trunk/libs/libssl-3.1/Makefile
-sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:#$(ROMFSINST) /etc_ro/ca-certificates.crt:' padavan-ng/trunk/libs/libssl-3.3/Makefile
-cat padavan-ng/trunk/libs/libssl-3.3/Makefile
-cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
-cat padavan-ng/trunk/user/scripts/dev_init.sh
+#gzip -kc padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt > padavan-ng/trunk/libs/libssl-1.1/ca-certificates
+#ls -la padavan-ng/trunk/libs/libssl-1.1
+#sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:$(ROMFSINST) /etc_ro/ca-certificates:' padavan-ng/trunk/libs/libssl-1.1/Makefile
+#cat padavan-ng/trunk/libs/libssl-1.1/Makefile
+#sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:#$(ROMFSINST) /etc_ro/ca-certificates.crt:' padavan-ng/trunk/libs/libssl-3.1/Makefile
+#cat padavan-ng/trunk/libs/libssl-3.1/Makefile
+#sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:#$(ROMFSINST) /etc_ro/ca-certificates.crt:' padavan-ng/trunk/libs/libssl-3.3/Makefile
+#cat padavan-ng/trunk/libs/libssl-3.3/Makefile
+#cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
+#cat padavan-ng/trunk/user/scripts/dev_init.sh
+sed -i '15s/.*/CFLAGS    = -Wall -Os/' padavan-ng/trunk/tools/Makefile
+cat padavan-ng/trunk/tools/Makefile
 
 sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
