@@ -50,8 +50,8 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 #cat padavan-ng/trunk/libs/libssl-3.3/Makefile
 #cp -f dev_init.sh padavan-ng/trunk/user/scripts/dev_init.sh
 #cat padavan-ng/trunk/user/scripts/dev_init.sh
-sed -i '15s/.*/CFLAGS    = -Wall -O2 -pipe/' padavan-ng/trunk/tools/Makefile
-cat padavan-ng/trunk/tools/Makefile
+#sed -i '15s/.*/CFLAGS    = -Wall -O2 -pipe/' padavan-ng/trunk/tools/Makefile
+#cat padavan-ng/trunk/tools/Makefile
 
 sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
