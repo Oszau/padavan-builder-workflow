@@ -26,7 +26,7 @@ HOSTLIST_DOMAINS="https://github.com/1andrevich/Re-filter-lists/releases/latest/
 HOSTLIST_MARKER="<HOSTLIST>"
 HOSTLIST_NOAUTO_MARKER="<HOSTLIST_NOAUTO>"
 
-[ ! -f "/tmp/auto.list" ] && cp ${ETC_DIR}/zapret/auto.list /tmp/auto.list
+[ ! -f "/tmp/auto.list" ] && cp ${CONFDIR}/auto.list /tmp/auto.list
 
 HOSTLIST_NOAUTO="
   --hostlist=${ETC_DIR}/zapret/user.list
