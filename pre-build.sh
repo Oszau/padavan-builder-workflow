@@ -1,8 +1,8 @@
 sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/config
 #sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
 cp -f exclude.list padavan-ng/trunk/user/nfqws/zapret/exclude.list
-cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
-#cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
+#cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
+cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
