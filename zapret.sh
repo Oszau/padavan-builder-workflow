@@ -35,7 +35,7 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=/tmp/auto.list
+  --hostlist-auto=/tmp/cache.list
   --hostlist=/tmp/filter.list
 "
 
