@@ -26,8 +26,6 @@ HOSTLIST_DOMAINS="https://github.com/1andrevich/Re-filter-lists/releases/latest/
 HOSTLIST_MARKER="<HOSTLIST>"
 HOSTLIST_NOAUTO_MARKER="<HOSTLIST_NOAUTO>"
 
-[ ! -f "/tmp/auto.list" ] && cp ${CONFDIR}/auto.list /tmp/auto.list
-
 HOSTLIST_NOAUTO="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist=${ETC_DIR}/zapret/auto.list
@@ -37,7 +35,7 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=/tmp/auto.list
+  --hostlist-auto=/tmp/cache.list
   --hostlist=/tmp/filter.list
 "
 
@@ -148,6 +146,7 @@ replace_str()
 }
 
 startup_args() {
+  [ -f /tmp/auto.list ] || touch /tmp/auto.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
