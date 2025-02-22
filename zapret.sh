@@ -41,7 +41,7 @@ HOSTLIST="
 
 ### default config
 
-ISP_INTERFACE=
+ISP_INTERFACE=br0
 IPV6_ENABLED=0
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
@@ -146,7 +146,6 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/cache.list ] || touch /tmp/cache.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
