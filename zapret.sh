@@ -146,7 +146,7 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/auto.list ] || touch /tmp/auto.list
+  [ -f /tmp/cache.list ] || touch /tmp/cache.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
