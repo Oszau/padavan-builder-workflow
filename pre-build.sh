@@ -31,6 +31,9 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's:$(ROMFSINST) $(SRC_NAME)/build/https_dns_proxy /usr/sbin/doh_proxy2:$(ROMFSINST) -s /usr/sbin/doh_proxy /usr/sbin/doh_proxy2:' padavan-ng/trunk/user/doh_proxy/Makefile
+cp -f Makefile_nghttp3 padavan-ng/trunk/libs/libnghttp3/Makefile
+cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
+cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
