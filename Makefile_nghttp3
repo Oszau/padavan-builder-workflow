@@ -4,8 +4,8 @@ SRC_URL=https://github.com/ngtcp2/nghttp3/releases/download/v1.7.0/$(SRC_NAME).t
 CFLAGS += -fPIC
 CXXFLAGS += -fPIC
 
-#all: download_test extract_test config_test
-all: config_test
+all: download_test extract_test config_test
+#all: config_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)/build
 
 download_test:
