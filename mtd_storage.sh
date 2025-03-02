@@ -279,6 +279,8 @@ EOF
 ### Custom user script
 ### Called after internal iptables reconfig (firewall update)
 
+/sbin/qos.sh
+
 EOF
 		chmod 755 "$script_postf"
 	fi
