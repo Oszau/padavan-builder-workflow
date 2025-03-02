@@ -757,7 +757,6 @@ DEBUG=0
 
 EOF
         fi
-}
 
 	# create strongswan files
 	if [ -x /usr/sbin/ipsec ]; then
