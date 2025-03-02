@@ -14,6 +14,10 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
+cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+cp -f qos.sh padavan-ng/trunk/user/optware/qos.sh
+sed -i '15a\\t$(ROMFSINST) -p +x /sbin/qos.sh' padavan-ng/trunk/user/optware/Makefile
+
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '224a\# Uncomment for use ASUSddns' padavan-ng/trunk/user/scripts/mtd_storage.sh
