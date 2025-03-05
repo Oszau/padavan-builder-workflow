@@ -522,7 +522,7 @@ EOF
 # Custom user servers file for dnsmasq
 
 ### Use time server update bypassing DoT/DoH
-server=/ntp.org/time.cloudflare.com/time.google.com/time.in.ua/1.1.1.1
+server=/ntp.org/time.cloudflare.com/time.google.com/time-in.ru/1.1.1.1
 
 EOF
 		chmod 644 "$user_dnsmasq_servers"
