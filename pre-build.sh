@@ -34,6 +34,8 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 cp -f Makefile_nghttp3 padavan-ng/trunk/libs/libnghttp3/Makefile
 cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
 cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
+cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
+cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
