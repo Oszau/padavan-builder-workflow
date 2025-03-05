@@ -44,7 +44,7 @@
 
 #define DEF_ROOT_PASSWORD	"admin"
 #define DEF_SMB_WORKGROUP	"WORKGROUP"
-#define DEF_TIMEZONE		"MST-3MDT"
+#define DEF_TIMEZONE		"UTC-3"
 #define DEF_NTP_SERVER0		"pool.ntp.org"
 #define DEF_NTP_SERVER1		"time.cloudflare.com"
 #define DEF_NTP_SERVER2		"time.google.com"
