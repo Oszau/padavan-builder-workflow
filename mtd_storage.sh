@@ -9,6 +9,7 @@ slk="/tmp/.storage_locked"
 tmp="/tmp/storage.tar"
 tbz="${tmp}.bz2"
 hsh="/tmp/hashes/storage_md5"
+config_qos="${dir_storage}/qos.conf"
 
 func_get_mtd()
 {
@@ -221,14 +222,6 @@ func_fill()
 	# create crond dir
 	[ ! -d "$dir_crond" ] && mkdir -p -m 730 "$dir_crond"
 
-	if [ ! -f "$dir_crond/$USER" ]; then
-		cat > "$dir_crond/$USER" <<EOF
-#*/5 * * * * /usr/bin/ASUSddns.sh $(nvram get wan_hwaddr) $(nvram get secret_code) $USER update logger
-#*/30 * * * * /usr/bin/clear_RAM.sh 15
-
-EOF
-	fi
-
 	# create https dir
 	[ ! -d "$dir_httpssl" ] && mkdir -p -m 700 "$dir_httpssl"
 
@@ -275,9 +268,6 @@ EOF
 ### Called before router shutdown
 ### \$1 - action (0: reboot, 1: halt, 2: power-off)
 
-swapoff /media/AiDisk_a1/swapfile
-sync && sync && sync && umount /dev/sda1
-
 EOF
 		chmod 755 "$script_shutd"
 	fi
@@ -290,18 +280,7 @@ EOF
 ### Custom user script
 ### Called after internal iptables reconfig (firewall update)
 
-iptables -t nat -nvL POSTROUTING | grep SNAT | awk '{
-    "ifconfig "$7" | grep Mask" | getline ip;
-    split(ip,ip,":"); split(ip[2],ip," ");
-    split($8,src,"!");
-    if (src[1]=="") {src="! -s "src[2]} else {src="-s "src[1]};
-    if ($9=="0.0.0.0/0") {dst=""} else {dst="-d "$9};
-    # SNAT back to MASQUERADE
-    #system("iptables -t nat -D POSTROUTING -o "$7" "src" "dst" -j SNAT --to-source "ip[1]);
-    #system("iptables -t nat -A POSTROUTING -o "$7" "src" "dst" -j MASQUERADE");
-}'
-
-swapon /media/AiDisk_a1/swapfile
+/sbin/qos.sh
 
 EOF
 		chmod 755 "$script_postf"
@@ -522,7 +501,7 @@ EOF
 # Custom user servers file for dnsmasq
 
 ### Use time server update bypassing DoT/DoH
-server=/ntp.org/time.cloudflare.com/time.google.com/time-in.ru/1.1.1.1
+server=/ntp.org/time.cloudflare.com/time.google.com/time.in.ua/1.1.1.1
 
 EOF
 		chmod 644 "$user_dnsmasq_servers"
@@ -649,6 +628,135 @@ EOF
 			chmod 644 "$user_ovpncli_conf"
 		fi
 	fi
+
+       # create qos config file
+        if [ ! -f "$config_qos" ] && [ -f "/lib/modules/$(uname -r)/kernel/net/sched/sch_htb.ko" ] ; then
+                cat > "$config_qos" << 'EOF'
+################################################################################
+##
+## User configuration of the QoS script
+##
+## At a minimum, set the DOWNLOAD and UPLOAD variables below. Setting these
+## slightly slower than the actual line speeds is critical to good QoS
+## performance. With download and upload speeds set too high, the traffic queues
+## in the modem (upload) and on the ISP side (download) will quickly fill up. As
+## these queues can be very long --on the order of several seconds-- filling
+## them will prohibit any meaningful traffic shaping.
+##
+## The default configuration, with the proper upload and download speeds set,
+## should be adequate for most situations to separate out low-priority peer-to
+## -peer traffic (eMule, Bittorrent, etc.) from interactive traffic such as web
+## browsing and SSH sessions.
+##
+## The configuration can be refined by modifying the settings below. As an
+## example, consider including support for VoIP. This may be accomplished by
+## adding the IP address of a VoIP adapter to the IP_EXPR variable (e.g.
+## IP_EXPR="192.168.1.10"). Doing so will elevate the status of traffic to and
+## from the VoIP box to 'express'.
+##
+## In general, the configuration of the QoS script requires the setting of
+## several variables. Most variables expect a space separated list of elements
+## (ports, IP addresses, protocols). Adding an element to a list will, based on
+## the variable name, either promote a certain connection to 'express' (highest
+## priority) or 'priority' status, or demote it to 'bulk' status. The default
+## status for all traffic is 'normal'. An example of setting a configuration
+## variable to classify traffic is the statement
+##
+## TCP_PRIO="80 443"
+##
+## Including this line in the configuration will ensure that all TCP traffic to
+## the listed ports (in this particular case for the http and https protocols)
+## will be treated as 'priority' traffic.
+##
+## Another example (from the default configuration) is:
+##
+## TCP_BULK="1024: 21"
+##
+## which adds port 21 (the port used for ftp) and all ports 1024 and up to the
+## list of destination ports for 'bulk' traffic. The result is that ftp
+## downloads get a low priority, as does traffic to non-reserved ports (mostly
+## peer-to-peer protocols). The notation '1024:' indicates a port range, in this
+## case including all ports 1024 and higher. Another example of a port range is
+## ':10' which means all ports from 0 to 10. A range from 10 to 20 is denoted as
+## '10:20'.
+##
+## It is important to note that some variables take precedence over others. This
+## becomes significant in cases where the same traffic is identified by
+## different rules. An example is adding a UDP game port above 1024 to the
+## express list. In the default configuration, all high ports (1024:) are
+## included in the UDP_BULK variable. Without knowing the order of the rules, it
+## is not possible to determine what the status of traffic to the game port will
+## be. It turns out, the traffic will be classified as priority, since UDP_EXPR
+## takes precedence over UDP_BULK.
+##
+## The order of the variables is (lowest precedence first):
+## TCP_BULK, UDP_BULK, TCP_PRIO, UDP_PRIO, TCP_EXPR, UDP_EXPR,
+## TOS_BULK, TOS_PRIO, TOS_EXPR, DSCP_BULK, DSCP_PRIO, DSCP_EXPR, 
+## IP_BULK, IP_PRIO, IP_EXPR
+##
+################################################################################
+
+# Enable or disable qos script
+# Set this to YES to enable QOS
+QOS_ENABLED="NO"
+
+# Download speed in kilobits per second
+# Set 5% - 10% lower than *measured* line speed (set to zero to disable)
+DOWNLOAD=5000
+
+# Upload speed in kilobits per second
+# Set 5% - 10% lower than *measured* line speed (set to zero to disable)
+UPLOAD=700
+
+# Destination ports for classifying 'bulk' traffic
+TCP_BULK="1024: 21"
+UDP_BULK="1024:"
+
+# Destination ports for classifying 'priority' traffic
+TCP_PRIO="22 23 4040 5800:5810 5900:5910"
+UDP_PRIO=""
+
+# Destination ports for classifying 'express' traffic
+TCP_EXPR="53"
+UDP_EXPR="53"
+
+# ToS (Type of Service) matches (egress only)
+#TOS_BULK="0x02"
+#TOS_PRIO=""
+#TOS_EXPR="0x10"
+
+# DSCP (Differentiated Services Code Point) matches (egress only)
+DSCP_BULK=""
+DSCP_PRIO=""
+DSCP_EXPR=""
+
+# LAN IP addresses for 'bulk', 'priority' and 'express' traffic
+# IP address can include a port number or range, such as 192.168.1.1:80 or
+# 192.168.1.1:5900:5910. To include all ports, specify the IP address only.
+IP_BULK=""
+IP_PRIO=""
+IP_EXPR=""
+
+# Define custom QoS interface. Defaults to wan interface automatically.
+#QOS_IF=eth3
+
+# Enable 'small UDP packets get priority' feature.
+# Sets the maximum length for priority UDP packets. Set to 0 to disable.
+UDP_LENGTH=256
+
+# Enable 'small TCP packets get priority on certain ports' feature.
+# Sets the maximum length for priority TCP packets. Set to 0 to disable.
+TCP_LENGTH=512
+
+# Sets the ports with prioritized small packets.
+# Has no effect if TCP_LENGTH=0
+TCP_LENGTH_PORTS="80 443"
+
+# Set to 1 to enable logging of packets to syslog
+DEBUG=0
+
+EOF
+        fi
 
 	# create strongswan files
 	if [ -x /usr/sbin/ipsec ]; then
