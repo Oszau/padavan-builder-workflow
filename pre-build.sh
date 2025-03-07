@@ -36,7 +36,7 @@ cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disa
 cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
 cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
 cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
-sed -i '118a\\tif (nvram_get_int("rstats_stored") == 0) break;' padavan-ng/trunk/user/shared/shutils.c
+sed -i '118a\\tif (nvram_get_int("stime_stored") == 0) break;' padavan-ng/trunk/user/shared/shutils.c
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
