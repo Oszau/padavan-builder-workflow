@@ -280,7 +280,8 @@ EOF
 ### Custom user script
 ### Called after internal iptables reconfig (firewall update)
 
-/sbin/qos.sh
+#Uncomment for qos enable. Used to config /etc/storage/qos.conf
+#/sbin/qos.sh
 
 EOF
 		chmod 755 "$script_postf"
@@ -698,7 +699,7 @@ EOF
 
 # Enable or disable qos script
 # Set this to YES to enable QOS
-QOS_ENABLED="NO"
+QOS_ENABLED="YES"
 
 # Download speed in kilobits per second
 # Set 5% - 10% lower than *measured* line speed (set to zero to disable)
