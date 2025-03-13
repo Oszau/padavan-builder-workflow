@@ -37,6 +37,7 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 
 cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
 cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
+cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
