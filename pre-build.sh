@@ -17,7 +17,7 @@ cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
+#sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
