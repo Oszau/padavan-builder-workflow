@@ -35,7 +35,7 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=/tmp/cache.list
+  --hostlist-auto=/tmp/auto.list
   --hostlist=/tmp/filter.list
 "
 
@@ -146,7 +146,7 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/cache.list ] || touch /tmp/cache.list
+  [ -f /tmp/auto.list ] || touch /tmp/auto.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
