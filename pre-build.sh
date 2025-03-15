@@ -12,11 +12,11 @@ cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-#cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
-
+cp qos.sh padavan-ng/trunk/user/optware/qos.sh
+sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
-cp -f qos.sh padavan-ng/trunk/user/optware/qos.sh
-sed -i '15a\\t$(ROMFSINST) -p +x /sbin/qos.sh' padavan-ng/trunk/user/optware/Makefile
+
+cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
@@ -32,9 +32,13 @@ sed -i '15a\\t$(ROMFSINST) -p +x /sbin/qos.sh' padavan-ng/trunk/user/optware/Mak
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's:$(ROMFSINST) $(SRC_NAME)/build/https_dns_proxy /usr/sbin/doh_proxy2:$(ROMFSINST) -s /usr/sbin/doh_proxy /usr/sbin/doh_proxy2:' padavan-ng/trunk/user/doh_proxy/Makefile
-cp -f Makefile_nghttp3 padavan-ng/trunk/libs/libnghttp3/Makefile
-cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
-cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
+#cp -f Makefile_nghttp3 padavan-ng/trunk/libs/libnghttp3/Makefile
+#cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
+#cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
+
+cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
+cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
+cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
 #sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 #sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
