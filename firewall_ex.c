@@ -677,7 +677,7 @@ include_masquerade(FILE *fp, char *wan_if, char *wan_ip, char *lan_net)
 {
 	char *dtype = "POSTROUTING";
 
-	if (wan_ip)
+	if (wan_ip && nvram_match("nf_nat_snat", "1"))
 		fprintf(fp, "-A %s -o %s -s %s -j SNAT --to-source %s\n", dtype, wan_if, lan_net, wan_ip);
 	else
 		fprintf(fp, "-A %s -o %s -s %s -j MASQUERADE\n", dtype, wan_if, lan_net);
@@ -1864,8 +1864,12 @@ ipt_nat_rules(char *man_if, char *man_ip,
 		}
 
 		/* masquerade LAN to LAN (NAT loopback) */
-		if (nvram_match("nf_nat_loop", "1"))
-			fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j SNAT --to-source %s\n", lan_if, lan_net, lan_net, lan_ip);
+		if (nvram_match("nf_nat_loop", "1")) {
+			if (nvram_match("nf_nat_snat", "1"))
+				fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j SNAT --to-source %s\n", lan_if, lan_net, lan_net, lan_ip);
+			else
+				fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j MASQUERADE\n", lan_if, lan_net, lan_net);
+		}
 
 		/* Local ports remap (http/https/ssh/ftp/udpxy) */
 		if (is_fw_enabled) {
@@ -2107,8 +2111,10 @@ ipt_nat_default(void)
 
 			/* masquerade lan to lan (NAT loopback) */
 			if (nvram_match("nf_nat_loop", "1")) {
-				fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j SNAT --to-source %s\n",
-					lan_if, lan_net, lan_net, lan_ip);
+				if (nvram_match("nf_nat_snat", "1"))
+					fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j SNAT --to-source %s\n", lan_if, lan_net, lan_net, lan_ip);
+				else
+					fprintf(fp, "-A POSTROUTING -o %s -s %s -d %s -j MASQUERADE\n", lan_if, lan_net, lan_net);
 			}
 		}
 	}
