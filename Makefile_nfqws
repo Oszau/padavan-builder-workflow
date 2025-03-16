@@ -16,7 +16,7 @@ all: clean download
 
 download:
 	test -d $(SRC_ZAPRET) || git clone $(URL_ZAPRET) $(SRC_ZAPRET)
-	cd $(SRC_ZAPRET) && git checkout $(COMMIT)
+	cd $(SRC_ZAPRET) && git checkout 8b73e2ea8e6882b191dca700f8c6ff8588bcb749
 	test -d $(SRC_ZAPRET)/.git && git -C $(SRC_ZAPRET) pull || :
 
 clean:
