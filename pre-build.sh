@@ -9,12 +9,12 @@ cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/confi
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
-#cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
-#sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-#cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-#sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
+sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
+cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 cp qos.sh padavan-ng/trunk/user/optware/qos.sh
-sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
+sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
