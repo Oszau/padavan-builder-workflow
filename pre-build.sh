@@ -15,8 +15,8 @@ cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
-sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+#cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
+#sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.sh
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
