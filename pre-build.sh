@@ -2,7 +2,7 @@ sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/
 #sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
 #cp -f exclude.list padavan-ng/trunk/user/nfqws/zapret/exclude.list
 #cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
-#cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
+cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
@@ -39,9 +39,9 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 #cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
 #cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
 
-#cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
-#cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
-#cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
+cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
+cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
+cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
@@ -64,9 +64,9 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 #sed -i '15s/.*/CFLAGS    = -Wall -O2 -pipe/' padavan-ng/trunk/tools/Makefile
 #cat padavan-ng/trunk/tools/Makefile
 
-#sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_NL is not set/CONFIG_NL=y/' padavan-ng/trunk/configs/boards/busybox.config
 
 #sed -i 's/# CONFIG_HEXDUMP is not set/CONFIG_HEXDUMP=y/' padavan-ng/trunk/configs/boards/busybox.config
