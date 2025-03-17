@@ -14,7 +14,7 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
+#cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i 's/size_tmp="8M"/size_tmp="12M"/' padavan-ng/trunk/user/scripts/dev_init.sh
 
