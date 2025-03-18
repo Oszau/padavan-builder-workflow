@@ -35,13 +35,13 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=${ETC_DIR}/zapret/auto.list
+  --hostlist-auto=${ETC_DIR}/zapret/cache.list
   --hostlist=/tmp/filter.list
 "
 
 ### default config
 
-ISP_INTERFACE=
+ISP_INTERFACE=br0
 IPV6_ENABLED=0
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
@@ -148,6 +148,7 @@ replace_str()
 }
 
 startup_args() {
+  [ -f /tmp/cache.list ] || touch /tmp/cache.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
