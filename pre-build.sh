@@ -51,6 +51,8 @@ sed -i '245s/.*/HOSTCXXFLAGS = -Os/' padavan-ng/trunk/linux-3.4.x/Makefile
 sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-ng/trunk/linux-3.4.x/Makefile
 #sed -i 's/# CONFIG_CC_OPTIMIZE_FOR_SIZE is not set/CONFIG_CC_OPTIMIZE_FOR_SIZE=y/' padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
+sed -i '3s/.*/CFLAGS +=$(COPT) -Os -ffunction-sections -fdata-sections -fvisibility=hidden/' padavan-ng/trunk/user/dnscrypt-proxy/Makefile
+
 #gzip -kc padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt > padavan-ng/trunk/libs/libssl-1.1/ca-certificates
 #ls -la padavan-ng/trunk/libs/libssl-1.1
 #sed -i 's:$(ROMFSINST) /etc_ro/ca-certificates.crt:$(ROMFSINST) /etc_ro/ca-certificates:' padavan-ng/trunk/libs/libssl-1.1/Makefile
