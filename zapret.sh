@@ -35,24 +35,26 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=/tmp/auto.list
+  --hostlist-auto=${ETC_DIR}/zapret/cache.list
   --hostlist=/tmp/filter.list
 "
 
 ### default config
 
-ISP_INTERFACE=
+ISP_INTERFACE=br0
 IPV6_ENABLED=0
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
 NFQUEUE_NUM=200
 LOG_LEVEL=0
 USER="nobody"
+START_SCRIPT=
+STOP_SCRIPT=
 
 ###
 
 log() {
-  [ -n "$@" ] || return
+  [ -n "$*" ] || return
   echo "$@"
   local pid
   [ -f "$PIDFILE" ] && pid="[$(cat "$PIDFILE" 2>/dev/null)]"
@@ -146,7 +148,7 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/auto.list ] || touch /tmp/auto.list
+  [ -f /tmp/cache.list ] || touch /tmp/cache.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
@@ -321,11 +323,28 @@ start_service() {
   echo "$res" | grep -iv "loading" | while read i; do
     log "$i"
   done
+
+  if is_running; then 
+    if [ -s "$START_SCRIPT" -a -x "$START_SCRIPT" ]; then
+      . "$START_SCRIPT"
+    elif [ -n "$START_SCRIPT" ]; then
+      error "$START_SCRIPT: not found or invalid"
+    fi
+  fi
 }
 
 stop_service() {
   firewall_stop
-  killall -q -s 15 $(basename "$NFQWS_BIN") && log "service nfqws stopped"
+  if killall -q -s 15 $(basename "$NFQWS_BIN"); then
+    log "service nfqws stopped"
+
+    if [ -s "$STOP_SCRIPT" -a -x "$STOP_SCRIPT" ]; then
+      . "$STOP_SCRIPT"
+    elif [ -n "$STOP_SCRIPT" ]; then
+      error "$STOP_SCRIPT: not found or invalid"
+    fi
+  fi
+
   rm -f "$PIDFILE"
 }
 
