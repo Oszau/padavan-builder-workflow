@@ -69,9 +69,9 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_ipaddr", "0.0.0.0" },		/* WAN IP address */
 	{ "wan_netmask", "0.0.0.0" },		/* WAN netmask */
 	{ "wan_gateway", "0.0.0.0" },		/* WAN gateway */
-	{ "wan_dnsenable_x", "1" },
-	{ "wan_dns1_x", "" },
-	{ "wan_dns2_x", "" },
+	{ "wan_dnsenable_x", "0" },
+	{ "wan_dns1_x", "77.88.8.7" },
+	{ "wan_dns2_x", "77.88.8.3" },
 	{ "wan_dns3_x", "" },
 	{ "wan_hostname", "" },			/* WAN hostname */
 	{ "wan_vci", "" },			/* WAN vendor class identifier (OPT-60) */
@@ -503,8 +503,8 @@ struct nvram_pair router_defaults[] = {
 	{ "dhcp_enable_x", "1" },
 	{ "dhcp_lease", "86400" },
 	{ "dhcp_gateway_x", "" },
-	{ "dhcp_dns1_x", "77.88.8.7" },
-	{ "dhcp_dns2_x", "77.88.8.3" },
+	{ "dhcp_dns1_x", "" },
+	{ "dhcp_dns2_x", "" },
 	{ "dhcp_dns3_x", "" },
 	{ "dhcp_dnsv6_x", "" },
 	{ "dhcp_wins_x", "" },
@@ -513,7 +513,7 @@ struct nvram_pair router_defaults[] = {
 	{ "dhcp_all_servers", "1" },
 	{ "dhcp_strict_order", "0" },
 	{ "dhcp_stop_dns_rebind", "0" },
-	{ "dhcp_proxy_dnssec", "1" },
+	{ "dhcp_proxy_dnssec", "0" },
 	{ "dhcp_verbose", "0" },		/* 0 : quiet, 1: verbose DHCP, 2: verbose DHCPv6, 3: verbose all */
 	{ "dhcp_static_x", "0" },
 	{ "dhcp_static_arp", "0" },
