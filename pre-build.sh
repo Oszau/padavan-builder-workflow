@@ -12,7 +12,7 @@ cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-#cp mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
