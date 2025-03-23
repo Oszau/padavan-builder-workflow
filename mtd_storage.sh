@@ -9,7 +9,6 @@ slk="/tmp/.storage_locked"
 tmp="/tmp/storage.tar"
 tbz="${tmp}.bz2"
 hsh="/tmp/hashes/storage_md5"
-config_qos="${dir_storage}/qos.conf"
 
 func_get_mtd()
 {
@@ -280,9 +279,6 @@ EOF
 ### Custom user script
 ### Called after internal iptables reconfig (firewall update)
 
-#Uncomment for qos enable. Used to config /etc/storage/qos.conf
-#/sbin/qos.sh
-
 EOF
 		chmod 755 "$script_postf"
 	fi
@@ -502,7 +498,7 @@ EOF
 # Custom user servers file for dnsmasq
 
 ### Use time server update bypassing DoT/DoH
-server=/ntp.org/time.cloudflare.com/time.google.com/time.in.ua/1.1.1.1
+#server=/ntp.org/time.cloudflare.com/time.google.com/time.in.ua/1.1.1.1
 
 EOF
 		chmod 644 "$user_dnsmasq_servers"
@@ -758,7 +754,7 @@ DEBUG=0
 
 EOF
         fi
-
+	
 	# create strongswan files
 	if [ -x /usr/sbin/ipsec ]; then
 		[ ! -d "$dir_sswan" ] && mkdir -p -m 700 "$dir_sswan"
