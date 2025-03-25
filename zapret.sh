@@ -35,7 +35,7 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=${ETC_DIR}/zapret/cache.list
+  --hostlist-auto=${ETC_DIR}/zapret/auto.list
   --hostlist=/tmp/filter.list
 "
 
@@ -101,13 +101,11 @@ unset NFT
 nft -v >/dev/null 2>&1 && NFT=1
 
 _ISP_IF=$(
-  echo "$ISP_INTERFACE,$(ip -4 r s default | cut -d ' ' -f5)" |\
-    tr " " "\n" | tr "," "\n" | sort -u
+  sed -nre 's/^([^\t]+)\t00000000\t[0-9A-F]{8}\t[0-9A-F]{4}\t[0-9]+\t[0-9]+\t[0-9]+\t00000000.*$/\1/p' /proc/net/route | xargs echo "$ISP_INTERFACE," | tr " " "\n" | tr "," "\n" | sort -u
 );
 
 _ISP_IF6=$(
-  echo "$ISP_INTERFACE,$(ip -6 r s default | cut -d ' ' -f5)" |\
-    tr " " "\n" | tr "," "\n" | sort -u
+  sed -nre 's/^00000000000000000000000000000000 00 [0-9a-f]{32} [0-9a-f]{2} [0-9a-f]{32} [0-9a-f]{8} [0-9a-f]{8} [0-9a-f]{8} [0-9a-f]{8} +(.*)$/\1/p' /proc/net/ipv6_route | grep -v '^lo$' | xargs echo "$ISP_INTERFACE," | tr " " "\n" | tr "," "\n" | sort -u
 );
 
 _MANGLE_RULES() ( echo "
@@ -148,7 +146,7 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/cache.list ] || touch /tmp/cache.list
+  [ -f /tmp/auto.list ] || touch /tmp/auto.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
@@ -324,7 +322,7 @@ start_service() {
     log "$i"
   done
 
-  if is_running; then 
+  if is_running; then
     if [ -s "$START_SCRIPT" -a -x "$START_SCRIPT" ]; then
       . "$START_SCRIPT"
     elif [ -n "$START_SCRIPT" ]; then
