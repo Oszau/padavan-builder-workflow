@@ -70,8 +70,8 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_netmask", "0.0.0.0" },		/* WAN netmask */
 	{ "wan_gateway", "0.0.0.0" },		/* WAN gateway */
 	{ "wan_dnsenable_x", "1" },
-	{ "wan_dns1_x", "77.88.8.7" },
-	{ "wan_dns2_x", "77.88.8.3" },
+	{ "wan_dns1_x", "" },
+	{ "wan_dns2_x", "" },
 	{ "wan_dns3_x", "" },
 	{ "wan_hostname", "" },			/* WAN hostname */
 	{ "wan_vci", "" },			/* WAN vendor class identifier (OPT-60) */
@@ -753,7 +753,6 @@ struct nvram_pair router_defaults[] = {
 	{ "fw_mac_drop", "0" },
 	{ "nf_nat_type", "2" },
 	{ "nf_nat_loop", "1" },
-	{ "nf_nat_snat", "1" },
 #if (BOARD_RAM_SIZE > 128)
 	{ "nf_max_conn", "32768" },
 #elif (BOARD_RAM_SIZE > 32)
