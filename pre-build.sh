@@ -7,15 +7,15 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
-cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
+#cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+#cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+#sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
-cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+#cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i '6s#.*#URL_ZAPRET = https://github.com/bol-van/zapret/tree/8b73e2ea8e6882b191dca700f8c6ff8588bcb749#' padavan-ng/trunk/user/nfqws/Makefile
@@ -39,9 +39,9 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 #cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
 #cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
 
-cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
-cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
-cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
+#cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
+#cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
+#cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
