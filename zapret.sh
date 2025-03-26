@@ -41,7 +41,7 @@ HOSTLIST="
 
 ### default config
 
-ISP_INTERFACE=br0
+ISP_INTERFACE=
 IPV6_ENABLED=0
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
@@ -89,9 +89,11 @@ done
 # copy all non-existent config files to storage except fake dir
 [ -d "$CONFDIR_EXAMPLE" ] && false | cp -i "${CONFDIR_EXAMPLE}"/* "$CONFDIR" >/dev/null 2>&1
 [ -f "$CONFFILE" ] && . "$CONFFILE"
-for i in user.list exclude.list auto.list strategy config; do
+for i in user.list exclude.list strategy config; do
   [ -f ${ETC_DIR}/zapret/$i ] || touch ${ETC_DIR}/zapret/$i || exit 1
 done
+[ -f /tmp/auto.list ] || touch /tmp/auto.list
+[ -f ${ETC_DIR}/zapret/auto.list ] || ln -s /tmp/auto.list ${ETC_DIR}/zapret/auto.list
 
 ###
 
@@ -146,7 +148,6 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/auto.list ] || touch /tmp/auto.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
