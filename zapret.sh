@@ -93,7 +93,7 @@ for i in user.list exclude.list strategy config; do
   [ -f ${ETC_DIR}/zapret/$i ] || touch ${ETC_DIR}/zapret/$i || exit 1
 done
 [ -f /tmp/auto.list ] || touch /tmp/auto.list
-[ -f ${ETC_DIR}/zapret/auto.list ] || ln -s /tmp/auto.list ${ETC_DIR}/zapret/auto.list
+[ -h ${ETC_DIR}/zapret/auto.list ] || ln -sf /tmp/auto.list ${ETC_DIR}/zapret/auto.list
 
 ###
 
