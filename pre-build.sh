@@ -10,9 +10,9 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
-cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+#cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+#sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+#cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
@@ -25,9 +25,9 @@ cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 #cp -f disabled-examples-in-cmakelists.patch padavan-ng/trunk/libs/libngtcp2/disabled-examples-in-cmakelists.patch
 #cp -f Makefile_ngtcp2 padavan-ng/trunk/libs/libngtcp2/Makefile
 
-cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
-cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
-cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
+#cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
+#cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
+#cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
