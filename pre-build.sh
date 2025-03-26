@@ -12,8 +12,8 @@ cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
-#cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
-#sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
+cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
+sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 #cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
