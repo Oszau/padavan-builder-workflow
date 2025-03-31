@@ -35,21 +35,20 @@ HOSTLIST_NOAUTO="
 HOSTLIST="
   --hostlist=${ETC_DIR}/zapret/user.list
   --hostlist-exclude=${ETC_DIR}/zapret/exclude.list
-  --hostlist-auto=${ETC_DIR}/zapret/cache.list
+  --hostlist-auto=${ETC_DIR}/zapret/auto.list
   --hostlist=/tmp/filter.list
 "
 
 ### default config
 
-ISP_INTERFACE=br0
+ISP_INTERFACE=
 IPV6_ENABLED=0
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
 NFQUEUE_NUM=200
 LOG_LEVEL=0
 USER="nobody"
-START_SCRIPT=
-STOP_SCRIPT=
+POST_SCRIPT=
 
 ###
 
@@ -92,6 +91,8 @@ done
 for i in user.list exclude.list auto.list strategy config; do
   [ -f ${ETC_DIR}/zapret/$i ] || touch ${ETC_DIR}/zapret/$i || exit 1
 done
+[ -f /tmp/auto.list ] || touch /tmp/auto.list
+[ -h ${ETC_DIR}/zapret/auto.list ] || ln -sf /tmp/auto.list ${ETC_DIR}/zapret/auto.list
 
 ###
 
@@ -101,13 +102,11 @@ unset NFT
 nft -v >/dev/null 2>&1 && NFT=1
 
 _ISP_IF=$(
-  echo "$ISP_INTERFACE,$(ip -4 r s default | cut -d ' ' -f5)" |\
-    tr " " "\n" | tr "," "\n" | sort -u
+  sed -nre 's/^([^\t]+)\t00000000\t[0-9A-F]{8}\t[0-9A-F]{4}\t[0-9]+\t[0-9]+\t[0-9]+\t00000000.*$/\1/p' /proc/net/route | xargs echo "$ISP_INTERFACE," | tr " " "\n" | tr "," "\n" | sort -u
 );
 
 _ISP_IF6=$(
-  echo "$ISP_INTERFACE,$(ip -6 r s default | cut -d ' ' -f5)" |\
-    tr " " "\n" | tr "," "\n" | sort -u
+  sed -nre 's/^00000000000000000000000000000000 00 [0-9a-f]{32} [0-9a-f]{2} [0-9a-f]{32} [0-9a-f]{8} [0-9a-f]{8} [0-9a-f]{8} [0-9a-f]{8} +(.*)$/\1/p' /proc/net/ipv6_route | grep -v '^lo$' | xargs echo "$ISP_INTERFACE," | tr " " "\n" | tr "," "\n" | sort -u
 );
 
 _MANGLE_RULES() ( echo "
@@ -148,7 +147,6 @@ replace_str()
 }
 
 startup_args() {
-  [ -f /tmp/cache.list ] || touch /tmp/cache.list
   [ -f /tmp/filter.list ] || touch /tmp/filter.list
   local args="--user=$USER --qnum=$NFQUEUE_NUM"
 
@@ -323,28 +321,11 @@ start_service() {
   echo "$res" | grep -iv "loading" | while read i; do
     log "$i"
   done
-
-  if is_running; then 
-    if [ -s "$START_SCRIPT" -a -x "$START_SCRIPT" ]; then
-      . "$START_SCRIPT"
-    elif [ -n "$START_SCRIPT" ]; then
-      error "$START_SCRIPT: not found or invalid"
-    fi
-  fi
 }
 
 stop_service() {
   firewall_stop
-  if killall -q -s 15 $(basename "$NFQWS_BIN"); then
-    log "service nfqws stopped"
-
-    if [ -s "$STOP_SCRIPT" -a -x "$STOP_SCRIPT" ]; then
-      . "$STOP_SCRIPT"
-    elif [ -n "$STOP_SCRIPT" ]; then
-      error "$STOP_SCRIPT: not found or invalid"
-    fi
-  fi
-
+  killall -q -s 15 $(basename "$NFQWS_BIN") && log "service nfqws stopped"
   rm -f "$PIDFILE"
 }
 
@@ -453,3 +434,5 @@ case "$1" in
   *)
     echo "Usage: $0 {start|stop|restart|download|download-nfqws|download-list|status}"
 esac
+
+[ -s "$POST_SCRIPT" -a -x "$POST_SCRIPT" ] && . "$POST_SCRIPT"
