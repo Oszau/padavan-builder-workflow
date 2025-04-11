@@ -32,7 +32,7 @@
 
 #include "rc.h"
 #include "switch.h"
-char *wan_hwaddr2;
+
 char*
 get_wan_unit_value(int unit, const char* param_name)
 {
@@ -455,6 +455,15 @@ config_soft_bridges_other(int vinet_vid, int viptv_vid, int pvid_wan, const char
 }
 #endif
 
+int get_wan_hwaddr(void) {
+	char buf[17];
+	FILE *fp = fopen("/tmp/wan_hwaddr", "r");
+	if (!fp) return 0;
+	fread(buf, 1, sizeof(buf), fp);
+	fclose(fp);
+	return(buf*);
+}
+
 static void
 config_vinet_wan(void)
 {
@@ -496,9 +505,8 @@ config_vinet_wan(void)
 	hw_vlan_tx_map(6, vlan_vid[0]);
 	hw_vlan_tx_map(7, vlan_vid[1]);
 
-	wan_hwaddr = nvram_safe_get("wan_hwaddr");
-	wan_hwaddr2 = getenv("WAN_HWADDR");
-	logmessage(LOGNAME, "WAN addr: %s / %s", wan_hwaddr, wan_hwaddr2);
+	if (!(wan_hwaddr = get_wan_hwaddr())) wan_hwaddr = nvram_safe_get("wan_hwaddr");
+	logmessage(LOGNAME, "WAN addr: %s", wan_hwaddr);
 
 	is_vlan_ifname = 1;
 	snprintf(vinet_ifname, sizeof(vinet_ifname), "%s.%d", ifname_wan_cpu, vlan_vid[0]);
@@ -654,9 +662,8 @@ launch_viptv_wan(void)
 	if (*viptv_iflast && strcmp(viptv_iflast, vinet_iflast) && strcmp(viptv_iflast, viptv_ifname))
 		remove_vlan_iface(viptv_iflast);
 
-	wan_hwaddr = nvram_safe_get("wan_hwaddr");
-	wan_hwaddr2 = getenv("WAN_HWADDR");
-	logmessage(LOGNAME, "WAN addr: %s / %s", wan_hwaddr, wan_hwaddr2);
+	if (!(wan_hwaddr = get_wan_hwaddr())) wan_hwaddr = nvram_safe_get("wan_hwaddr");
+	logmessage(LOGNAME, "WAN addr: %s", wan_hwaddr);
 
 	/* create VLAN interface for IPTV */
 	create_vlan_iface(ifname_wan_cpu, vlan_vid[1], vlan_pri, 1500, wan_hwaddr, 1);
