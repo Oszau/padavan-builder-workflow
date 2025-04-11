@@ -32,7 +32,7 @@
 
 #include "rc.h"
 #include "switch.h"
-char *wan_hwaddr2
+char *wan_hwaddr2;
 char*
 get_wan_unit_value(int unit, const char* param_name)
 {
