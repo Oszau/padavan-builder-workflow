@@ -455,13 +455,13 @@ config_soft_bridges_other(int vinet_vid, int viptv_vid, int pvid_wan, const char
 }
 #endif
 
-int get_wan_hwaddr(void) {
+char * get_wan_hwaddr(void) {
 	char buf[17];
 	FILE *fp = fopen("/tmp/wan_hwaddr", "r");
 	if (!fp) return 0;
 	fread(buf, 1, sizeof(buf), fp);
 	fclose(fp);
-	return(buf*);
+	return buf;
 }
 
 static void
