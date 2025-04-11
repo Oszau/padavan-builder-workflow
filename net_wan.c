@@ -497,6 +497,7 @@ config_vinet_wan(void)
 	hw_vlan_tx_map(7, vlan_vid[1]);
 
 	//wan_hwaddr = nvram_safe_get("wan_hwaddr");
+	logmessage(LOGNAME, "WAN addr: %s.", getenv("WAN_HWADDR"));
 	if (!(wan_hwaddr = getenv("WAN_HWADDR"))) wan_hwaddr = nvram_safe_get("wan_hwaddr");
 
 	is_vlan_ifname = 1;
@@ -654,6 +655,7 @@ launch_viptv_wan(void)
 		remove_vlan_iface(viptv_iflast);
 
 	//wan_hwaddr = nvram_safe_get("wan_hwaddr");
+	logmessage(LOGNAME, "WAN addr: %s", getenv("WAN_HWADDR"));
 	if (!(wan_hwaddr = getenv("WAN_HWADDR"))) wan_hwaddr = nvram_safe_get("wan_hwaddr");
 
 	/* create VLAN interface for IPTV */
