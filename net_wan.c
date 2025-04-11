@@ -498,7 +498,7 @@ config_vinet_wan(void)
 
 	//wan_hwaddr = nvram_safe_get("wan_hwaddr");
 	if (!(wan_hwaddr = getenv("WAN_HWADDR"))) wan_hwaddr = nvram_safe_get("wan_hwaddr");
-	logmessage(LOGNAME, "WAN addr: %q %q", getenv("WAN_HWADDR"), wan_hwaddr);
+	logmessage(LOGNAME, "WAN addr: %s %s", getenv("WAN_HWADDR"), wan_hwaddr);
 
 	is_vlan_ifname = 1;
 	snprintf(vinet_ifname, sizeof(vinet_ifname), "%s.%d", ifname_wan_cpu, vlan_vid[0]);
@@ -656,7 +656,7 @@ launch_viptv_wan(void)
 
 	//wan_hwaddr = nvram_safe_get("wan_hwaddr");
 	if (!(wan_hwaddr = getenv("WAN_HWADDR"))) wan_hwaddr = nvram_safe_get("wan_hwaddr");
-	logmessage(LOGNAME, "WAN addr: %q %q", getenv("WAN_HWADDR"), wan_hwaddr);
+	logmessage(LOGNAME, "WAN addr: %s %s", getenv("WAN_HWADDR"), wan_hwaddr);
 
 	/* create VLAN interface for IPTV */
 	create_vlan_iface(ifname_wan_cpu, vlan_vid[1], vlan_pri, 1500, wan_hwaddr, 1);
