@@ -1,18 +1,18 @@
-#sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/config
-sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/config
+sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/config
+#sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/config
 #sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
 #cp -f exclude.list padavan-ng/trunk/user/nfqws/zapret/exclude.list
 #cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
-cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
+#cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 #sed -i 's/SRC_VER = 70.5/SRC_VER = 70.6/' padavan-ng/trunk/user/nfqws/Makefile
 cp -f net_wan.c padavan-ng/trunk/user/rc/net_wan.c
-sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
-sed -i  12a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
+#sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
+#sed -i  12a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
 
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
-cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
+#cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
 cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
