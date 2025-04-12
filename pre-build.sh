@@ -48,9 +48,9 @@ cp -f defaults.c padavan-ng/trunk/user/shared/defaults.c
 cp -f defaults.h padavan-ng/trunk/user/shared/defaults.h
 #cp -f firewall_ex.c padavan-ng/trunk/user/rc/firewall_ex.c
 
-cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt
-cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-3.1/ca-certificates.crt
-cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt
+#cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-1.1/ca-certificates.crt
+#cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-3.1/ca-certificates.crt
+#cp -f ca-certificates.crt padavan-ng/trunk/libs/libssl-3.3/ca-certificates.crt
 
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-1.1/Makefile
 sed -i '12s/.*/COPTS = $(CPUFLAGS) -Os $(filter-out -O%, $(CFLAGS))/' padavan-ng/trunk/libs/libssl-3.1/Makefile
@@ -73,9 +73,9 @@ sed -i '573s/.*/KBUILD_CFLAGS += -Os -fno-reorder-blocks -fno-tree-ch/' padavan-
 #sed -i '15s/.*/CFLAGS    = -Wall -O2 -pipe/' padavan-ng/trunk/tools/Makefile
 #cat padavan-ng/trunk/tools/Makefile
 
-#sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_CMP is not set/CONFIG_CMP=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_NL is not set/CONFIG_NL=y/' padavan-ng/trunk/configs/boards/busybox.config
 
 #sed -i 's/# CONFIG_HEXDUMP is not set/CONFIG_HEXDUMP=y/' padavan-ng/trunk/configs/boards/busybox.config
