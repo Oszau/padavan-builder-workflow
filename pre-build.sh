@@ -6,9 +6,8 @@ sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/
 cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
 #sed -i 's/SRC_VER = 70.5/SRC_VER = 70.6/' padavan-ng/trunk/user/nfqws/Makefile
 cp -f net_wan.c padavan-ng/trunk/user/rc/net_wan.c
-#sed -i '6a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
-#sed -i '7a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
-#sed -i '13a\    export WAN_HWADDR=FC:75:16:01:02:03' padavan-ng/trunk/user/scripts/profile
+sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
+sed -i '12a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
 
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
