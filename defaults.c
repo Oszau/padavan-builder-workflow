@@ -267,7 +267,7 @@ struct nvram_pair router_defaults[] = {
 	/* 2.4GHz Wireless parameters */
 	{ "rt_country_code", DEF_WLAN_2G_CC },
 	{ "rt_ssid", DEF_WLAN_2G_SSID },
-	{ "rt_gmode", "3" },			/* n Only */
+	{ "rt_gmode", "2" },			/* n Only */
 	{ "rt_mcs_mode", "0" },
 	{ "rt_channel", "0" },			/* Channel number */
 	{ "rt_bcn", "100" },
