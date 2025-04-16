@@ -4,8 +4,9 @@ sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zaprets
 #sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
 #cp -f exclude.list padavan-ng/trunk/user/nfqws/zapret/exclude.list
 #cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
-cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
-sed -i '8a\\tCFLAGS += -Os'  padavan-ng/trunk/user/nfqws/Makefile
+#cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
+cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
+#sed -i '8a\\tCFLAGS += -Os'  padavan-ng/trunk/user/nfqws/Makefile
 #sed -i 's/SRC_VER = 70.5/SRC_VER = 70.6/' padavan-ng/trunk/user/nfqws/Makefile
 #cp -f net_wan.c padavan-ng/trunk/user/rc/net_wan.c
 #sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
