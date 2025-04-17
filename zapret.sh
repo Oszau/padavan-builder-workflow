@@ -14,12 +14,13 @@ NFQWS_BIN_GIT="/tmp/nfqws"
 ETC_DIR="/etc"
 
 # padavan
-[ -d "/etc_ro" ] && ETC_DIR="/etc/storage"
+[ -d "/etc_ro" -a -d "/etc/storage" ] && ETC_DIR="/etc/storage"
 
 CONFDIR="${ETC_DIR}/zapret"
 CONFDIR_EXAMPLE="/usr/share/zapret"
 CONFFILE="$CONFDIR/config"
 PIDFILE="/var/run/zapret.pid"
+POST_SCRIPT="$CONFDIR/post_script.sh"
 
 HOSTLIST_DOMAINS="https://github.com/1andrevich/Re-filter-lists/releases/latest/download/domains_all.lst"
 
@@ -42,14 +43,12 @@ HOSTLIST="
 ### default config
 
 ISP_INTERFACE=
-IPV6_ENABLED=0
+IPV6_ENABLED=1
 TCP_PORTS=80,443
 UDP_PORTS=443,50000:50099
 NFQUEUE_NUM=200
 LOG_LEVEL=0
 USER="nobody"
-START_SCRIPT=
-STOP_SCRIPT=
 
 ###
 
@@ -71,12 +70,11 @@ if id -u >/dev/null 2>&1; then
 fi
 
 # padavan: possibility of running nfqws from usb-flash drive
-[ -d "/etc_ro" ] && for i in "a1" "a2" "a3" "a4" "b1" "b2" "b3" "b4" ; do
-    disk_path="/media/AiDisk_${i}"
-    if [ -d "${disk_path}" ] && grep -q ${disk_path} /proc/mounts ; then
-        if [ -f "${disk_path}$NFQWS_BIN_OPT" ]; then
-            NFQWS_BIN="${disk_path}$NFQWS_BIN_OPT"
-            chmod +x "$NFQWS_BIN"
+[ -d "/etc_ro" ] && for i in $(cat /proc/mounts | awk '/^\/dev.+\/media/{print $2}'); do
+    if [ -s "${i}$NFQWS_BIN_OPT" ]; then
+        chmod +x "${i}$NFQWS_BIN_OPT"
+        if [ -x "${i}$NFQWS_BIN_OPT" ]; then
+            NFQWS_BIN="${i}$NFQWS_BIN_OPT"
             break
         fi
     fi
@@ -322,28 +320,11 @@ start_service() {
   echo "$res" | grep -iv "loading" | while read i; do
     log "$i"
   done
-
-  if is_running; then
-    if [ -s "$START_SCRIPT" -a -x "$START_SCRIPT" ]; then
-      . "$START_SCRIPT"
-    elif [ -n "$START_SCRIPT" ]; then
-      error "$START_SCRIPT: not found or invalid"
-    fi
-  fi
 }
 
 stop_service() {
   firewall_stop
-  if killall -q -s 15 $(basename "$NFQWS_BIN"); then
-    log "service nfqws stopped"
-
-    if [ -s "$STOP_SCRIPT" -a -x "$STOP_SCRIPT" ]; then
-      . "$STOP_SCRIPT"
-    elif [ -n "$STOP_SCRIPT" ]; then
-      error "$STOP_SCRIPT: not found or invalid"
-    fi
-  fi
-
+  killall -q -s 15 $(basename "$NFQWS_BIN") && log "service nfqws stopped"
   rm -f "$PIDFILE"
 }
 
@@ -452,3 +433,5 @@ case "$1" in
   *)
     echo "Usage: $0 {start|stop|restart|download|download-nfqws|download-list|status}"
 esac
+
+[ -s "$POST_SCRIPT" -a -x "$POST_SCRIPT" ] && . "$POST_SCRIPT"
