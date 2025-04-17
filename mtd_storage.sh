@@ -217,6 +217,7 @@ func_fill()
 	user_sswan_conf="$dir_sswan/strongswan.conf"
 	user_sswan_ipsec_conf="$dir_sswan/ipsec.conf"
 	user_sswan_secrets="$dir_sswan/ipsec.secrets"
+	user_smb_conf="$dir_storage/smb.conf"
 
 	# create crond dir
 	[ ! -d "$dir_crond" ] && mkdir -p -m 730 "$dir_crond"
@@ -481,6 +482,15 @@ dhcp-option=252,"\n"
 ### Do NOT forward queries with no domain part
 domain-needed
 
+### Do NOT read /etc/resolv.conf
+#no-resolv
+
+### Yandex DNS Family for only kids Smartphone
+#dhcp-mac=set:kids,AA:BB:CC:DD:EE:FF
+### for host 2
+#dhcp-mac=set:kids,A2:B2:C2:D2:E2:F2
+#dhcp-option=tag:kids,option:dns-server,77.88.8.7,77.88.8.3
+
 EOF
 	if [ -f /usr/bin/vlmcsd ]; then
 		cat >> "$user_dnsmasq_conf" <<EOF
@@ -499,6 +509,17 @@ EOF
 
 ### Use time server update bypassing DoT/DoH
 #server=/ntp.org/time.cloudflare.com/time.google.com/time.in.ua/1.1.1.1
+
+### For use Yandex DNS enable no-resolv to dnsmasq.conf
+### Yandex DNS Fast
+#server=77.88.8.8
+#server=77.88.8.1
+### Yandex DNS Safe
+#server=77.88.8.88
+#server=77.88.8.2
+### Yandex DNS Safe+Family
+#server=77.88.8.7
+#server=77.88.8.3
 
 EOF
 		chmod 644 "$user_dnsmasq_servers"
@@ -654,6 +675,44 @@ EOF
 
 EOF
 			chmod 644 "$user_sswan_secrets"
+		fi
+	fi
+	# create user smb.conf file
+	if [ -x "/sbin/smbd" ]; then
+		if [ ! -f "$user_smb_conf" ]; then
+			cat > "$user_smb_conf" <<EOF
+### Custom user conf file for Samba server
+
+### This is continuation of global section of auto-generated config
+### DO NOT define [global] here or it may break configuration!
+
+### Limit minimal protocol version to 2
+# min protocol = smb2
+
+### Bind to 0.0.0.0 and :: instead of interfaces only
+# bind interfaces only = no
+
+### Allows symlinks to be followed
+# follow symlinks = yes
+# wide links = yes
+
+
+### You can add custom shares here (only after defining all global parameters)
+### Hide opt directory
+# [opt]
+# browseable = no
+
+### Export router storage
+# [storage]
+# comment = storage
+# path = /etc/storage
+# read only = no
+# valid users = admin
+# read list = admin
+# write list = admin
+
+EOF
+			chmod 644 "$user_smb_conf"
 		fi
 	fi
 }
