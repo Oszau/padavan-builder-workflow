@@ -23,7 +23,7 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
-#cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i '6s#.*#URL_ZAPRET = https://github.com/bol-van/zapret/tree/8b73e2ea8e6882b191dca700f8c6ff8588bcb749#' padavan-ng/trunk/user/nfqws/Makefile
