@@ -14,6 +14,7 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.
 #cp -f net_wan.c padavan-ng/trunk/user/rc/net_wan.c
 #sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
 #sed -i '12a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
+cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 #cp padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
@@ -27,8 +28,6 @@ sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/op
 #cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
-
-cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
