@@ -27,7 +27,7 @@ cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i 's/patch -p0 -i nfq-compat.patch/#patch -p0 -i nfq-compat.patch/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i '6s#.*#URL_ZAPRET = https://github.com/bol-van/zapret/tree/8b73e2ea8e6882b191dca700f8c6ff8588bcb749#' padavan-ng/trunk/user/nfqws/Makefile
-cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
+#cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
