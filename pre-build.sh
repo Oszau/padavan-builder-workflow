@@ -2,7 +2,6 @@
 #sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/config
 sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/share/zapret/config
 #sed -i 's/TCP_PORTS=80,443/TCP_PORTS=443/' padavan-ng/trunk/user/nfqws/zapret/config
-cp -f Makefile_nfqws padavan-ng/trunk/user/nfqws/Makefile
 #cp -f exclude.list padavan-ng/trunk/user/nfqws/zapret/exclude.list
 #cp -f strategy padavan-ng/trunk/user/nfqws/zapret/strategy
 #cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapret.sh
@@ -27,7 +26,7 @@ cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp qos.sh padavan-ng/trunk/user/optware/qos.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/qos.sh' padavan-ng/trunk/user/optware/Makefile
-#cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
+cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 #sed -i '222a\\tif [ ! -f "$dir_crond/$USER" ]; then' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '223a\\t\tcat > "$USER" <<EOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
