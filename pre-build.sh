@@ -38,7 +38,7 @@ cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '228a\\nEOF' padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '229a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
-sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+#sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.sh
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
