@@ -12,6 +12,8 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.
 #sed -i '11a\    export TEMP=/tmp' padavan-ng/trunk/user/scripts/profile
 #sed -i '12a\    export TMP=$TEMP' padavan-ng/trunk/user/scripts/profile
 
+sed -i 's/#define SQUASHFS_FILE_SIZE		131072/#define SQUASHFS_FILE_SIZE		256/' padavan-ng/trunk/tools/mksquashfs_xz/squashfs-4.6.1/mksquashfs.c
+
 #rm padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f padavan-ng/trunk/configs/boards/pt_ralink_8m.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 ##cp pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
@@ -39,6 +41,7 @@ cp -f mtd_storage.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 #sed -i '229a\\tfi\n' padavan-ng/trunk/user/scripts/mtd_storage.sh
 
 sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.sh
+#sed -i '39s/.*/#define SQUASHFS_FILE_SIZE		256/' padavan-ng/trunk/user/scripts/dev_init.sh
 
 #sed -i 's/--with-nghttp3/--without-nghttp3/' padavan-ng/trunk/libs/libcurl/Makefile
 #sed -i 's/--with-ngtcp2/--without-ngtcp2/' padavan-ng/trunk/libs/libcurl/Makefile
