@@ -1,11 +1,11 @@
 PADAVAN_REPO="https://gitlab.com/hadzhioglu/padavan-ng.git"
 PADAVAN_BRANCH="master"
-#PADAVAN_COMMIT="HEAD"
+PADAVAN_COMMIT="HEAD"
 #Jan 15, 2025
 #PADAVAN_COMMIT="6155192b90fcff23e4a2dbc9d93c5310d0195529"
 #Feb 15, 2025
 #PADAVAN_COMMIT="9ec675c6ea80f3da88f8d947e109a744a69504af"
-PADAVAN_COMMIT="7842c2c2f88eecaee6b9424890bec6964d413aec"
+#PADAVAN_COMMIT="7842c2c2f88eecaee6b9424890bec6964d413aec"
 PADAVAN_TOOLCHAIN_URL="https://gitlab.com/api/v4/projects/hadzhioglu%2Fpadavan-ng/packages/generic/toolchain/latest/toolchain.tzst"
 
 PADAVAN_THEMES_REPO="https://gitlab.com/hadzhioglu/padavan-themes.git"
