@@ -1,5 +1,5 @@
 mkdir padavan-ng/trunk/user/minipro
-#cp -f minipro-0.7.4.tar.gz padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
+cp -f minipro-0.7.4.tar.gz padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
 #tar -C padavan-ng/trunk/user/minipro -xvf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
 #ls -la padavan-ng/trunk/user/minipro
 #ls -la padavan-ng/trunk/user/minipro/minipro-0.7.4
