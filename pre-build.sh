@@ -1,10 +1,10 @@
 mkdir padavan-ng/trunk/user/minipro
 cp -f minipro-0.7.4.tar.gz padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
-ls -la padavan-ng/trunk/user/minipro
-#tar zxf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
 tar -C padavan-ng/trunk/user/minipro -xvf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
-ls -la padavan-ng/trunk/user/minipro
-ls -la padavan-ng/trunk/user/minipro/minipro-0.7.4
+#ls -la padavan-ng/trunk/user/minipro
+#ls -la padavan-ng/trunk/user/minipro/minipro-0.7.4
+sed -i '79a\\tdir_y						+= minipro' padavan-ng/trunk/user/Makefile
+cat padavan-ng/trunk/user/Makefile
 
 #sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/config
 #sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/config
