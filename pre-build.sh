@@ -1,3 +1,8 @@
+mkdir padavan-ng/trunk/user/minipro
+cp -f minipro-0.7.4.tar.gz padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
+tar zxf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
+ls -la padavan-ng/trunk/user/minipro/*
+
 #sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapret/config
 #sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/config/config
 ##sed -i 's/ISP_INTERFACE=/ISP_INTERFACE=br0/' padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/share/zapret/config
