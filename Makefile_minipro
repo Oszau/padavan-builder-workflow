@@ -1,6 +1,6 @@
 SRC_VER = 0.7.4
 SRC_NAME = minipro-$(SRC_VER)
-SRC_URL = hhttps://gitlab.com/DavidGriffith/minipro/-/archive/v$(SRC_VER)/$(SRC_NAME).tar.gz
+SRC_URL = hhttps://gitlab.com/DavidGriffith/minipro/-/archive/$(SRC_VER)/$(SRC_NAME).tar.gz
 
 all: download_test extract_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
