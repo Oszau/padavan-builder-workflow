@@ -2,7 +2,15 @@ SRC_VER = 0.7.4
 SRC_NAME = minipro-$(SRC_VER)
 SRC_URL = hhttps://gitlab.com/DavidGriffith/minipro/-/archive/$(SRC_VER)/$(SRC_NAME).tar.gz
 
-shell pkg-config --cflags --libs zlib libz lz
+PKG_CONFIG := $(shell which pkg-config 2>/dev/null)
+ifeq ($(PKG_CONFIG),)
+        ERROR := $(error "pkg-config utility not found")
+endif
+zlib_CFLAGS := $(shell $(PKG_CONFIG) --cflags zlib)
+zlib_LIBS := $(shell $(PKG_CONFIG) --libs zlib)
+override CFLAGS += $(zlib_CFLAGS)
+override LIBS += $(zlib_LIBS)
+@echo zlib_CFLAGS " " zlib_LIBS
 
 all: download_test extract_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
