@@ -93,9 +93,9 @@ ifneq ($(OS),Windows_NT)
     ifeq ($(libusb_LIBS),)
         ERROR := $(error "libusb-1.0 not found")
     endif
-    ifeq ($(zlib_LIBS),)
-        ERROR := $(error "zlib not found")
-    endif
+    #ifeq ($(zlib_LIBS),)
+        #ERROR := $(error "zlib not found")
+    #endif
     override CFLAGS += $(libusb_CFLAGS) $(zlib_CFLAGS)
     override LIBS += $(libusb_LIBS) $(zlib_LIBS) $(EXTRA_LIBS)
 else
