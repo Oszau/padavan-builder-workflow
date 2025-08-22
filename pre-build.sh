@@ -1,9 +1,10 @@
 mkdir padavan-ng/trunk/user/minipro
 cp -f minipro-0.7.4.tar.gz padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
-#tar -C padavan-ng/trunk/user/minipro -zxf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
+tar -C padavan-ng/trunk/user/minipro -zxf padavan-ng/trunk/user/minipro/minipro-0.7.4.tar.gz
 #ls -la padavan-ng/trunk/user/minipro
 #ls -la padavan-ng/trunk/user/minipro/minipro-0.7.4
 cp -f Makefile_minipro padavan-ng/trunk/user/minipro/Makefile
+cp -f Makefile_minipro2 padavan-ng/trunk/user/minipro//minipro-0.7.4/Makefile
 sed -i '79a\dir_y						+= minipro' padavan-ng/trunk/user/Makefile
 #cat padavan-ng/trunk/user/Makefile
 
