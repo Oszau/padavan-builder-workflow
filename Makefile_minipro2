@@ -7,8 +7,7 @@ CC=gcc
 # Compiler options
 CFLAGS ?= -g -O0 -Wall -Wextra -W -Wno-sign-compare -Wno-unused-parameter
 CPPFLAGS += -DSHARE_INSTDIR="\"$(SHARE_INSTDIR)\""
-#LDFLAGS ?=
-LDFLAGS += -Wl,--gc-sections,-rpath-link,$(STAGEDIR)/lib -lcurl -lssl -lcrypto -lz
+LDFLAGS ?=
 
 # Normally minipro is installed to /usr/local.  If you want to put it
 # somewhere else, define that location here.
@@ -88,17 +87,19 @@ COMPLETIONS_INSTDIR=$(DESTDIR)$(COMPLETIONS_DIR)
 
 ifneq ($(OS),Windows_NT)
     libusb_CFLAGS := $(shell $(PKG_CONFIG) --cflags libusb-1.0)
-    zlib_CFLAGS := $(shell $(PKG_CONFIG) --cflags zlib)
+    #zlib_CFLAGS := $(shell $(PKG_CONFIG) --cflags zlib)
     libusb_LIBS := $(shell $(PKG_CONFIG) --libs libusb-1.0)
-    zlib_LIBS := $(shell $(PKG_CONFIG) --libs zlib)
+    #zlib_LIBS := $(shell $(PKG_CONFIG) --libs zlib)
     ifeq ($(libusb_LIBS),)
         ERROR := $(error "libusb-1.0 not found")
     endif
-    ifeq ($(zlib_LIBS),)
-        ERROR := $(error "zlib not found")
-    endif
-    override CFLAGS += $(libusb_CFLAGS) $(zlib_CFLAGS)
-    override LIBS += $(libusb_LIBS) $(zlib_LIBS) $(EXTRA_LIBS)
+    #ifeq ($(zlib_LIBS),)
+        #ERROR := $(error "zlib not found")
+    #endif
+    #override CFLAGS += $(libusb_CFLAGS) $(zlib_CFLAGS)
+    #override LIBS += $(libusb_LIBS) $(zlib_LIBS) $(EXTRA_LIBS)
+    override CFLAGS += $(libusb_CFLAGS)
+    override LIBS += $(libusb_LIBS) $(EXTRA_LIBS)
 else
 # Add Windows libs here
 override LIBS += -lsetupapi \
