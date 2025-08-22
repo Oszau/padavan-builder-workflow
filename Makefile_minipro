@@ -2,6 +2,8 @@ SRC_VER = 0.7.4
 SRC_NAME = minipro-$(SRC_VER)
 SRC_URL = hhttps://gitlab.com/DavidGriffith/minipro/-/archive/$(SRC_VER)/$(SRC_NAME).tar.gz
 
+PKG_CONFIG_PATH=$(STAGEDIR)/lib/pkgconfig
+
 all:
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
 
