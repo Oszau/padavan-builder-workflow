@@ -574,9 +574,13 @@ done
 
 [ -s "$CONF_FILE" ] && . "$CONF_FILE"
 
-for i in user.list exclude.list auto.list strategy config; do
+for i in user.list exclude.list strategy config; do
     [ -f ${CONF_DIR}/$i ] || touch ${CONF_DIR}/$i || exit 1
 done
+[ -f /tmp/auto.list ] || touch /tmp/auto.list
+[ -h ${ETC_DIR}/zapret/auto.list ] || ln -sf /tmp/auto.list ${ETC_DIR}/zapret/auto.list
+
+###
 
 unset OPENWRT
 [ -f "/etc/openwrt_release" ] && OPENWRT=1
