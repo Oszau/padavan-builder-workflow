@@ -3,6 +3,8 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.
 cp -f pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
+sed -i 's/SRC_VER = 71.4/SRC_VER = 72.4/' padavan-ng/trunk/user/nfqws/Makefile
+
 #cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 #sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 #cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
