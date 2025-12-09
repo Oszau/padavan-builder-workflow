@@ -94,8 +94,10 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.
 cp -f pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
 
+cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
+sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f sysinfo padavan-ng/trunk/user/optware/sysinfo
-sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
+sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
 
 cp -f mtd_storage_mod.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 cp -f defaults_mod.c padavan-ng/trunk/user/shared/defaults.c
