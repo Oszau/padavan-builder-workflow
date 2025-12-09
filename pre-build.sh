@@ -5,14 +5,14 @@ cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG
 
 sed -i 's/SRC_VER = 71.4/SRC_VER = 72.4/' padavan-ng/trunk/user/nfqws/Makefile
 
-#cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
-#sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
+cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
+sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 #cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 #sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp strategy.sh padavan-ng/trunk/user/optware/strategy.sh
 #sed -i '15a\\t$(ROMFSINST) -p +x /usr/bin/strategy.sh' padavan-ng/trunk/user/optware/Makefile
 cp -f sysinfo padavan-ng/trunk/user/optware/sysinfo
-sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
+sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/sysinfo' padavan-ng/trunk/user/optware/Makefile
 
 cp -f mtd_storage_mod.sh padavan-ng/trunk/user/scripts/mtd_storage.sh
 cp -f defaults_mod.c padavan-ng/trunk/user/shared/defaults.c
