@@ -8,6 +8,7 @@
 
 #cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
 cp -f zapret_714.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
+sed -i 's/SRC_VER = 71.4/SRC_VER = 72.9/' padavan-ng/trunk/user/nfqws/Makefile
 
 #sed -i '8a\\tCFLAGS += -Os'  padavan-ng/trunk/user/nfqws/Makefile
 #sed -i 's/SRC_VER = 70.5/SRC_VER = 70.6/' padavan-ng/trunk/user/nfqws/Makefile
