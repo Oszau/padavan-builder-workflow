@@ -5,6 +5,7 @@ cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG
 #cp -f board.h padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/board.h
 
 sed -i 's/SRC_NAME=dnsmasq-2.91/SRC_NAME=dnsmasq-2.92/' padavan-ng/trunk/user/dnsmasq/Makefile
+sed -i 's/#all: download_test extract_test/all: download_test extract_test/' padavan-ng/trunk/user/dnsmasq/Makefile
 
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.5/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.7/' padavan-ng/trunk/user/nfqws/Makefile
