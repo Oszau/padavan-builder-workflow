@@ -2,7 +2,7 @@
 #PADAVAN_REPO="https://github.com/nilabsent/padavan-ng.git"
 PADAVAN_REPO="https://github.com/Oszau/padavan-ng.git"
 #PADAVAN_BRANCH="master"
-PADAVAN_BRANCH="test"
+PADAVAN_BRANCH="test2"
 PADAVAN_COMMIT="HEAD"
 PADAVAN_TOOLCHAIN_URL="https://gitlab.com/api/v4/projects/hadzhioglu%2Fpadavan-ng/packages/generic/toolchain/latest/toolchain.tzst"
 
