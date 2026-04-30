@@ -9,7 +9,8 @@ cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.
 
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.5/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.7/' padavan-ng/trunk/user/nfqws/Makefile
-sed -i 's/SRC_VER = 71.4/SRC_VER = 72.12/' padavan-ng/trunk/user/nfqws/Makefile
+sed -i 's/SRC_VER = 71.4/SRC_VER = 72.9/' padavan-ng/trunk/user/nfqws/Makefile
+#sed -i 's/SRC_VER = 71.4/SRC_VER = 72.12/' padavan-ng/trunk/user/nfqws/Makefile
 
 #cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
 #sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
