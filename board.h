@@ -8,10 +8,8 @@
 #define BOARD_MODEL_URL		"http://www.asus.com/Networking/RTN56U/"
 #define BOARD_BOOT_TIME		35
 #define BOARD_FLASH_TIME	180
-//#define BOARD_GPIO_BTN_RESET	13
-//#define BOARD_GPIO_BTN_WPS	26
-#undef BOARD_GPIO_BTN_RESET
-#undef BOARD_GPIO_BTN_WPS
+#define BOARD_GPIO_BTN_RESET	13
+#define BOARD_GPIO_BTN_WPS	26
 #undef  BOARD_GPIO_LED_ALL
 #undef  BOARD_GPIO_LED_WIFI
 #define BOARD_GPIO_LED_POWER	0
