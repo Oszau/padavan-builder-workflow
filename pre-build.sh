@@ -25,6 +25,7 @@ cp -f board.h padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PR
 #cp -f defaults_mod.c padavan-ng/trunk/user/shared/defaults.c
 #cp -f defaults_mod.h padavan-ng/trunk/user/shared/defaults.h
 
+sed -i 's/# CONFIG_BC is not set/CONFIG_BC=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
 sed -i 's/# CONFIG_XXD is not set/CONFIG_XXD=y/' padavan-ng/trunk/configs/boards/busybox.config
