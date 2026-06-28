@@ -1,3 +1,6 @@
+rm -r  padavan-ng/trunk/user/dnsmasq
+wget https://github.com/nilabsent/padavan-ng/tree/7438a540504f4bad3417eb0e8b2cda9c9583cb5a/trunk/user/dnsmasq -P padavan-ng/trunk/user/
+
 cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
 
 #cp -f pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
