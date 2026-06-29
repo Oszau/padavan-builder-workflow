@@ -89,10 +89,16 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 #sed -i 's/# CONFIG_NC_EXTRA is not set/CONFIG_NC_EXTRA=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_NC_110_COMPAT is not set/CONFIG_NC_110_COMPAT=y/' padavan-ng/trunk/configs/boards/busybox.config
 
+rm -r  padavan-ng/trunk/user/busybox
+rm -r  padavan-ng/trunk/user/dnsmasq
+git clone https://github.com/nilabsent/padavan-ng.git /tmp/padavan-ng
+cp -r /tmp/padavan-ng/trunk/user/dnsmasq padavan-ng/trunk/user/busybox
+cp -r /tmp/padavan-ng/trunk/user/dnsmasq padavan-ng/trunk/user/dnsmasq
+
 cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
 
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.5/' padavan-ng/trunk/user/nfqws/Makefile
-sed -i 's/SRC_VER = 71.4/SRC_VER = 72.12/' padavan-ng/trunk/user/nfqws/Makefile
+#sed -i 's/SRC_VER = 71.4/SRC_VER = 72.12/' padavan-ng/trunk/user/nfqws/Makefile
 
 ##cp -f pt_ralink_8m_ministor.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/partitions.config
 cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PRODUCT_ID/kernel-3.4.x.config
@@ -106,14 +112,14 @@ cp -f kernel-3.4.x.config padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG
 #cp -f defaults_mod.c padavan-ng/trunk/user/shared/defaults.c
 #cp -f defaults_mod.h padavan-ng/trunk/user/shared/defaults.h
 
-#sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_BC is not set/CONFIG_BC=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_BC is not set/CONFIG_BC=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_FEATURE_CATN is not set/CONFIG_FEATURE_CATN=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_DIFF is not set/CONFIG_DIFF=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_SHA256SUM is not set/CONFIG_SHA256SUM=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_SHA512SUM is not set/CONFIG_SHA512SUM=y/' padavan-ng/trunk/configs/boards/busybox.config
-#sed -i 's/# CONFIG_XXD is not set/CONFIG_XXD=y/' padavan-ng/trunk/configs/boards/busybox.config
+sed -i 's/# CONFIG_XXD is not set/CONFIG_XXD=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_IPCALC is not set/CONFIG_IPCALC=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_FEATURE_IPCALC_LONG_OPTIONS is not set/CONFIG_FEATURE_IPCALC_LONG_OPTIONS=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_FEATURE_IPCALC_FANCY is not set/CONFIG_FEATURE_IPCALC_FANCY=y/' padavan-ng/trunk/configs/boards/busybox.config
