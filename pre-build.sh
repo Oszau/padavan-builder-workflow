@@ -1,9 +1,10 @@
 rm -r  padavan-ng/trunk/user/dnsmasq
 #ls padavan-ng/trunk/user/
-mkdir padavan-ng/trunk/user/dnsmasq
+#mkdir padavan-ng/trunk/user/dnsmasq
 wget https://github.com/nilabsent/padavan-ng/tree/7438a540504f4bad3417eb0e8b2cda9c9583cb5a/trunk/user/dnsmasq -P padavan-ng/trunk/user/
 ls -la padavan-ng/trunk/user/
 ls -la padavan-ng/trunk/user/dnsmasq/
+break
 
 cp -f zapret.sh padavan-ng/trunk/user/nfqws/zapretsh-main/zapret/usr/bin/zapret.sh
 
