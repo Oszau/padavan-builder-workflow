@@ -90,11 +90,11 @@ sed -i 's/size_tmp="8M"/size_tmp="10M"/' padavan-ng/trunk/user/scripts/dev_init.
 #sed -i 's/# CONFIG_NC_110_COMPAT is not set/CONFIG_NC_110_COMPAT=y/' padavan-ng/trunk/configs/boards/busybox.config
 
 
-rm -r  padavan-ng/trunk/user/busybox
+#rm -r  padavan-ng/trunk/user/busybox
 rm -r  padavan-ng/trunk/user/dnsmasq
 git clone https://github.com/nilabsent/padavan-ng.git /tmp/padavan-ng
-cp -r /tmp/padavan-ng/trunk/user/busybox padavan-ng/trunk/user/busybox
-ls -la padavan-ng/trunk/user/busybox
+#cp -r /tmp/padavan-ng/trunk/user/busybox padavan-ng/trunk/user/busybox
+#ls -la padavan-ng/trunk/user/busybox
 cp -r /tmp/padavan-ng/trunk/user/dnsmasq padavan-ng/trunk/user/dnsmasq
 ls -la padavan-ng/trunk/user/dnsmasq
 
