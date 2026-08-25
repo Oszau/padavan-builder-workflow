@@ -22,8 +22,8 @@ cp -f board.h padavan-ng/trunk/configs/boards/$CONFIG_VENDOR/$CONFIG_FIRMWARE_PR
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.9/' padavan-ng/trunk/user/nfqws/Makefile
 #sed -i 's/SRC_VER = 71.4/SRC_VER = 72.12/' padavan-ng/trunk/user/nfqws/Makefile
 
-#cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
-#sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
+cp ASUSddns.sh padavan-ng/trunk/user/optware/ASUSddns.sh
+sed -i '13a\\t$(ROMFSINST) -p +x /usr/bin/ASUSddns.sh' padavan-ng/trunk/user/optware/Makefile
 #cp clear_RAM.sh padavan-ng/trunk/user/optware/clear_RAM.sh
 #sed -i '14a\\t$(ROMFSINST) -p +x /usr/bin/clear_RAM.sh' padavan-ng/trunk/user/optware/Makefile
 #cp strategy.sh padavan-ng/trunk/user/optware/strategy.sh
