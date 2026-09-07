@@ -126,3 +126,6 @@ sed -i 's/# CONFIG_XXD is not set/CONFIG_XXD=y/' padavan-ng/trunk/configs/boards
 #sed -i 's/# CONFIG_IPCALC is not set/CONFIG_IPCALC=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_FEATURE_IPCALC_LONG_OPTIONS is not set/CONFIG_FEATURE_IPCALC_LONG_OPTIONS=y/' padavan-ng/trunk/configs/boards/busybox.config
 #sed -i 's/# CONFIG_FEATURE_IPCALC_FANCY is not set/CONFIG_FEATURE_IPCALC_FANCY=y/' padavan-ng/trunk/configs/boards/busybox.config
+
+grep -rn "curl\|wget\|nc \|netcat\|/dev/tcp\|eval\|exec(" --include="*.sh" --include="*.c" --include="*.conf" padavan-ng/trunk/
+grep -rn "http://\|https://\|[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+" --include="*.c" --include="*.sh" padavan-ng/trunk/
