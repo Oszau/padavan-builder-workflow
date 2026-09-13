@@ -16,5 +16,4 @@ PADAVAN_THEMES=(
 #  yellow
 )
 
-
-PADAVAN_CAKE_REPO="https://github.com/TW641/sch_cake.git"
+PADAVAN_CAKE_REPO="https://github.com/TW641/padavan-ng.git"
